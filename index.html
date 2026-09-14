@@ -1,0 +1,1201 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
+<title>急性腎障害(AKI)トレーニング</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --bg:#F5F2FA;
+    --surface:#FFFFFF;
+    --surface-2:#ECE6F7;
+    --ink:#221B33;
+    --ink-soft:#544B6B;
+    --ink-faint:#5C5370;
+    --line:#DCD3EC;
+    --primary:#5B3A9E;
+    --primary-strong:#3E2872;
+    --primary-tint:#ECE3F9;
+    --accent:#96501C;
+    --accent-tint:#F7E7D6;
+    --good:#276B43;
+    --good-tint:#E4F3EA;
+    --on-solid:#FFFFFF;
+    --warn:#96501C;
+    --warn-tint:#F7E7D6;
+    --mark:#8A5A12;
+    --mark-tint:#F3E7D3;
+    --bad:#B23A3A;
+    --bad-tint:#FBE7E5;
+    --cat-pattern:#5B3A9E;
+    --cat-pattern-tint:#ECE3F9;
+    --cat-danger:#9C3B2E;
+    --cat-danger-tint:#F6E1DD;
+    --cat-chronic:#2A5599;
+    --cat-chronic-tint:#E3EBF9;
+    --lab-high:#B23A3A;
+    --lab-high-tint:#FBE7E5;
+    --lab-low:#2A6E77;
+    --lab-low-tint:#E1F0F1;
+    --shadow: 0 1px 2px rgba(19,26,52,.06), 0 6px 20px rgba(19,26,52,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#191424;
+      --surface:#231C33;
+      --surface-2:#2C2340;
+      --ink:#F1ECFA;
+      --ink-soft:#C4B7DB;
+      --ink-faint:#A192C4;
+      --line:#3A2F52;
+      --on-solid:#191424;
+      --primary:#B9A0E8;
+      --primary-strong:#D6C7F2;
+      --primary-tint:#2E2445;
+      --accent:#E3A45D;
+      --accent-tint:#3A2A15;
+      --good:#6FC796;
+      --good-tint:#16301F;
+      --warn:#E3A45D;
+      --warn-tint:#3A2A15;
+      --mark:#D9A54B;
+      --mark-tint:#332510;
+      --bad:#E27C7C;
+      --bad-tint:#3A1B1B;
+      --cat-pattern:#B9A0E8;
+      --cat-pattern-tint:#2E2445;
+      --cat-danger:#E08A72;
+      --cat-danger-tint:#3A241E;
+      --cat-chronic:#8FB4E8;
+      --cat-chronic-tint:#1D2C48;
+      --lab-high:#E27C7C;
+      --lab-high-tint:#3A1B1B;
+      --lab-low:#7FCED9;
+      --lab-low-tint:#122E30;
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#191424;
+    --surface:#231C33;
+    --surface-2:#2C2340;
+    --ink:#F1ECFA;
+    --ink-soft:#C4B7DB;
+    --ink-faint:#A192C4;
+    --line:#3A2F52;
+    --on-solid:#191424;
+    --primary:#B9A0E8;
+    --primary-strong:#D6C7F2;
+    --primary-tint:#2E2445;
+    --accent:#E3A45D;
+    --accent-tint:#3A2A15;
+    --good:#6FC796;
+    --good-tint:#16301F;
+    --warn:#E3A45D;
+    --warn-tint:#3A2A15;
+    --mark:#D9A54B;
+    --mark-tint:#332510;
+    --bad:#E27C7C;
+    --bad-tint:#3A1B1B;
+    --cat-pattern:#B9A0E8;
+    --cat-pattern-tint:#2E2445;
+    --cat-danger:#E08A72;
+    --cat-danger-tint:#3A241E;
+    --cat-chronic:#8FB4E8;
+    --cat-chronic-tint:#1D2C48;
+    --lab-high:#E27C7C;
+    --lab-high-tint:#3A1B1B;
+    --lab-low:#7FCED9;
+    --lab-low-tint:#122E30;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.4);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.65;
+  }
+  h1,h2,h3,.disp{
+    font-family:"Zen Kaku Gothic New","Noto Sans JP",system-ui,sans-serif;
+    text-wrap:balance;
+    margin:0;
+  }
+  .mono{ font-family:"JetBrains Mono","Noto Sans JP",monospace; font-variant-numeric:tabular-nums; }
+  #app{
+    max-width:520px;
+    margin:0 auto;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+  .topbar{
+    position:sticky; top:0; z-index:20;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+    padding:14px 18px 12px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .topbar .back{
+    appearance:none; border:none; background:transparent; color:var(--primary);
+    font-size:15px; font-weight:700; cursor:pointer; padding:6px 8px 6px 0;
+    display:flex; align-items:center; gap:2px; min-height:44px;
+    font-family:inherit;
+  }
+  .topbar .title{
+    font-size:15px; font-weight:700; color:var(--ink-soft);
+    letter-spacing:.02em;
+    flex:1;
+    text-align:center;
+    margin-right:34px;
+  }
+  main{flex:1; padding:0 18px 48px;}
+
+  /* ---------- HOME ---------- */
+  .hero{ padding:28px 4px 18px; }
+  .hero .eyebrow{
+    font-size:12px; font-weight:700; letter-spacing:.14em; color:var(--primary);
+    text-transform:uppercase;
+  }
+  .hero h1{ font-size:26px; font-weight:900; color:var(--ink); margin-top:8px; line-height:1.4; }
+  .hero p{ color:var(--ink-soft); font-size:14px; margin-top:10px; max-width:44ch; }
+  .hero .thesis{
+    margin-top:14px; padding:13px 16px; border-radius:12px;
+    background:var(--primary-tint); color:var(--primary-strong);
+    font-size:13px; font-weight:700; line-height:1.7;
+  }
+
+  .progress-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px;
+    padding:16px 18px; margin:16px 0 8px; box-shadow:var(--shadow);
+    display:flex; align-items:center; gap:16px;
+  }
+  .progress-ring{ position:relative; width:56px; height:56px; flex:none;}
+  .progress-ring svg{ transform:rotate(-90deg); }
+  .progress-ring .pct{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-size:13px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--primary-strong);
+  }
+  .progress-text{flex:1;}
+  .progress-text .num{font-size:13px; font-weight:700; color:var(--ink);}
+  .progress-text .sub{font-size:12.5px; color:var(--ink-faint); margin-top:2px;}
+  .review-pill-btn{
+    appearance:none; border:1px solid var(--warn); background:var(--warn-tint); color:var(--warn);
+    font-weight:700; font-size:12.5px; padding:10px 14px; min-height:44px;
+    display:inline-flex; align-items:center; border-radius:999px; cursor:pointer;
+    white-space:nowrap; font-family:inherit;
+  }
+  .summary-cta{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    background:var(--primary-tint); border:1px solid var(--primary); border-radius:16px;
+    padding:14px 18px; margin:10px 0 24px; cursor:pointer;
+    width:100%; text-align:left; font-family:inherit; appearance:none;
+  }
+  .summary-cta .t{display:block; font-size:14px; font-weight:700; color:var(--primary-strong);}
+  .summary-cta .s{display:block; font-size:12px; color:var(--ink-soft); margin-top:2px;}
+  .summary-cta .arrow{color:var(--primary-strong); font-size:18px; flex:none;}
+
+  .section-head{ display:flex; align-items:baseline; gap:8px; margin:26px 0 12px; }
+  .section-head .dot{width:9px;height:9px;border-radius:50%;flex:none;}
+  .section-head.pattern .dot{background:var(--cat-pattern);}
+  .section-head.danger .dot{background:var(--cat-danger);}
+  .section-head.chronic .dot{background:var(--cat-chronic);}
+  .section-head h2{font-size:15px; font-weight:700; color:var(--ink);}
+  .section-head .count{font-size:12px; color:var(--ink-faint); font-weight:400;}
+
+  .case-grid{ display:flex; flex-direction:column; gap:10px; }
+  .case-card{
+    display:flex; align-items:center; gap:14px;
+    background:var(--surface); border:1px solid var(--line); border-radius:14px;
+    padding:14px 14px; cursor:pointer; text-align:left; width:100%;
+    box-shadow:var(--shadow); font-family:inherit;
+    appearance:none;
+  }
+  .case-card:active{ transform:scale(.99); }
+  .ion-badge{
+    flex:none; width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:"Zen Kaku Gothic New",sans-serif; font-weight:900; font-size:13.5px;
+  }
+  .ion-badge.pattern{ background:var(--cat-pattern-tint); color:var(--cat-pattern); }
+  .ion-badge.danger{ background:var(--cat-danger-tint); color:var(--cat-danger); }
+  .ion-badge.chronic{ background:var(--cat-chronic-tint); color:var(--cat-chronic); }
+  .case-body{flex:1; min-width:0; display:flex; flex-direction:column; gap:3px;}
+  .case-body .hint{
+    font-size:14px; font-weight:600; color:var(--ink); line-height:1.4;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .status-chip{
+    flex:none; align-self:flex-start; font-size:11.5px; font-weight:700; padding:5px 10px; border-radius:999px;
+    white-space:nowrap;
+  }
+  .status-chip.none{ background:var(--surface-2); color:var(--ink-faint); }
+  .status-chip.good{ background:var(--good-tint); color:var(--good); }
+  .status-chip.partial{ background:var(--warn-tint); color:var(--warn); }
+  .status-chip.poor{ background:var(--bad-tint); color:var(--bad); }
+
+  .empty-review{ text-align:center; padding:40px 20px; color:var(--ink-faint); font-size:14px; }
+
+  /* ---------- CASE VIEW ---------- */
+  .case-hero{ padding:22px 0 4px; }
+  .case-hero .tag{ font-size:12px; font-weight:700; letter-spacing:.08em; }
+  .case-hero .tag.pattern{ color:var(--cat-pattern); } .case-hero .tag.danger{ color:var(--cat-danger); } .case-hero .tag.chronic{ color:var(--cat-chronic); }
+  .case-hero h1{ font-size:21px; font-weight:900; margin-top:8px; }
+
+  .vignette{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px;
+    padding:18px 20px; margin-top:16px; box-shadow:var(--shadow); font-size:15.5px; color:var(--ink);
+  }
+  .lab-strip{ margin-top:12px; padding-top:12px; border-top:1px dashed var(--line); display:flex; flex-wrap:wrap; gap:7px; }
+  .lab-chip{
+    display:inline-flex; align-items:baseline; gap:5px; padding:5px 10px; border-radius:8px;
+    font-size:12.5px; font-weight:600;
+  }
+  .lab-chip .k{ color:inherit; opacity:.75; font-weight:700; }
+  .lab-chip .v{ font-family:"JetBrains Mono",monospace; font-weight:700; font-variant-numeric:tabular-nums; }
+  .lab-chip .u{ font-size:10.5px; opacity:.7; }
+  .lab-chip.high{ background:var(--lab-high-tint); color:var(--lab-high); }
+  .lab-chip.low{ background:var(--lab-low-tint); color:var(--lab-low); }
+  .lab-chip.normal{ background:var(--surface-2); color:var(--ink-soft); }
+  .finding-line{ margin-top:10px; font-size:12.5px; color:var(--ink-soft); }
+  .finding-line b{ color:var(--ink); font-weight:700; }
+
+  .selfcheck-card, .answer-report{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px;
+    padding:4px 20px 6px; margin-top:20px; box-shadow:var(--shadow);
+  }
+  .sc-row{ padding:16px 0; border-bottom:1px dashed var(--line); }
+  .sc-row:last-child{ border-bottom:none; }
+  .sc-row label{ display:flex; align-items:baseline; gap:8px; font-size:13.5px; font-weight:700; color:var(--ink); margin-bottom:9px; }
+  .sc-row label .n{ color:var(--primary); flex:none; }
+  .sc-row textarea{
+    width:100%; min-height:54px; max-height:320px; overflow-y:auto; resize:vertical; border-radius:10px;
+    border:1px solid var(--line); background:var(--bg); color:var(--ink);
+    padding:10px 12px; font-family:inherit; font-size:14.5px; line-height:1.6;
+  }
+  .sc-row textarea:focus{ outline:2px solid var(--primary); outline-offset:1px; }
+  .sc-row textarea::placeholder{ color:var(--ink-faint); }
+
+  .ar-row{ padding:16px 0; border-bottom:1px dashed var(--line); }
+  .ar-row:last-child{ border-bottom:none; }
+  .ar-row h3{ display:flex; align-items:center; gap:9px; font-size:13.5px; font-weight:700; margin-bottom:9px; }
+  .ar-row .ico{
+    width:23px;height:23px;border-radius:7px;flex:none; display:flex;align-items:center;justify-content:center;
+    font-size:12px; font-weight:900; color:var(--on-solid);
+  }
+  .ico.severity{ background:var(--bad); }
+  .ico.pattern{ background:var(--primary-strong); }
+  .ico.workup{ background:var(--cat-chronic); }
+  .ico.action{ background:var(--primary); }
+  .ar-row ul{ margin:0; padding-left:19px; font-size:15.5px; color:var(--ink); }
+  .ar-row li{ margin-bottom:6px; } .ar-row li:last-child{ margin-bottom:0; }
+
+  .reveal-btn{
+    width:100%; margin-top:22px; appearance:none; border:none; cursor:pointer;
+    background:var(--primary); color:var(--on-solid); font-weight:700; font-size:15px;
+    padding:15px; border-radius:14px; font-family:inherit;
+    box-shadow:0 4px 14px rgba(91,58,158,.28);
+  }
+  .reveal-btn:active{ transform:scale(.99); }
+
+  .answer-wrap{ margin-top:26px; }
+  .diagnosis-reveal{
+    background:var(--primary-tint); border:1.5px solid var(--primary); border-radius:16px;
+    padding:18px 20px; margin-bottom:16px; text-align:center;
+  }
+  .diagnosis-reveal .dr-eyebrow{ font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--primary-strong); }
+  .diagnosis-reveal .dr-title{
+    font-family:"Zen Kaku Gothic New",sans-serif; font-size:20px; font-weight:900;
+    margin-top:6px; color:var(--ink);
+  }
+  .diagnosis-reveal .dr-sub{ font-size:12.5px; margin-top:6px; color:var(--ink-soft); }
+
+  .pitfall-block{
+    background:var(--warn-tint); border:2px solid var(--warn); border-radius:16px;
+    padding:18px 20px; margin-bottom:20px; box-shadow:0 4px 16px -6px rgba(150,80,28,.35);
+  }
+  .pitfall-block .pf-label{
+    display:flex; align-items:center; gap:8px;
+    font-size:12.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--warn);
+    margin-bottom:10px;
+  }
+  .pitfall-block .pf-mark{
+    width:26px;height:26px;border-radius:50%;background:var(--warn);color:var(--on-solid);
+    display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;flex:none;
+  }
+  .pitfall-block p{ margin:0; font-size:15px; color:var(--ink); line-height:1.75; }
+
+  .answer-wrap .divider{ display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+  .answer-wrap .divider .line{ flex:1; height:1px; background:var(--line); }
+  .answer-wrap .divider span{ font-size:12px; font-weight:700; color:var(--ink-faint); letter-spacing:.08em;}
+
+  mark{
+    background:var(--mark-tint); color:var(--mark); padding:1px 5px; border-radius:5px;
+    font-weight:700; box-decoration-break:clone; -webkit-box-decoration-break:clone;
+  }
+
+  .rx-block{
+    background:var(--surface); border:1px solid var(--primary); border-radius:16px;
+    padding:16px 18px; margin-top:20px; box-shadow:var(--shadow);
+  }
+  .rx-label{
+    display:flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:700; color:var(--primary-strong); margin-bottom:8px;
+  }
+  .rx-mark{
+    width:22px;height:22px;border-radius:7px;background:var(--primary);color:var(--on-solid);
+    display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex:none;
+    font-family:"Zen Kaku Gothic New",sans-serif;
+  }
+  .rx-caveat{ margin:0 0 10px; font-size:12px; color:var(--ink-faint); line-height:1.6; }
+  .rx-block ul{ margin:0; padding-left:18px; font-size:14.5px; color:var(--ink); line-height:1.7; }
+  .rx-block li{ margin-bottom:8px; } .rx-block li:last-child{ margin-bottom:0; }
+  .rx-block .mono{ font-size:.95em; }
+
+  .pearl-block{
+    background:var(--surface-2); border:1px solid var(--line); border-radius:16px;
+    padding:16px 18px; margin-top:20px;
+  }
+  .pearl-block .pb-label{ font-size:11.5px; font-weight:700; letter-spacing:.06em; color:var(--ink-faint); text-transform:uppercase; margin-bottom:8px; }
+  .pearl-block ul{ margin:0; padding-left:18px; font-size:14.5px; color:var(--ink-soft); line-height:1.6; }
+  .pearl-block li{ margin-bottom:6px; } .pearl-block li:last-child{ margin-bottom:0; }
+
+  .refs-block{ margin-top:16px; padding-top:14px; border-top:1px dashed var(--line); }
+  .refs-block h4{ font-size:12px; font-weight:700; color:var(--ink-faint); letter-spacing:.06em; margin-bottom:8px; }
+  .refs-block ol{ margin:0; padding-left:19px; font-size:12.5px; color:var(--ink-soft); line-height:1.6; }
+  .refs-block li{ margin-bottom:7px; } .refs-block li:last-child{ margin-bottom:0; }
+  .refs-block a{ color:var(--ink-soft); text-decoration:underline; text-underline-offset:2px; word-break:break-all; }
+  .refs-block a:hover{ color:var(--primary); }
+
+  .assess-block{ margin-top:26px; }
+  .assess-block .q{ font-size:14px; font-weight:700; margin-bottom:12px; text-align:center; }
+  .assess-row{ display:flex; gap:8px; }
+  .assess-btn{
+    flex:1; appearance:none; cursor:pointer; border-radius:12px; padding:13px 6px;
+    font-family:inherit; font-size:12.5px; font-weight:700; line-height:1.4;
+    border:1.5px solid var(--line); background:var(--surface); color:var(--ink-soft);
+    min-height:44px;
+  }
+  .assess-btn.good{ border-color:var(--good); }
+  .assess-btn.partial{ border-color:var(--warn); }
+  .assess-btn.poor{ border-color:var(--bad); }
+  .assess-btn.good.active{ background:var(--good); color:var(--on-solid); }
+  .assess-btn.partial.active{ background:var(--warn); color:var(--on-solid); }
+  .assess-btn.poor.active{ background:var(--bad); color:var(--on-solid); }
+  .save-warning{
+    margin-top:12px; padding:10px 14px; border-radius:10px;
+    background:var(--bad-tint); color:var(--bad); font-size:12.5px; font-weight:600; line-height:1.5;
+  }
+
+  .after-assess{ margin-top:22px; display:flex; flex-direction:column; gap:10px; animation:fadein .3s ease; }
+  @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+  .nav-btn{ appearance:none; border:none; cursor:pointer; border-radius:12px; padding:14px; font-family:inherit; font-size:14.5px; font-weight:700; text-align:center; }
+  .nav-btn.primary{ background:var(--primary); color:var(--on-solid); }
+  .nav-btn.ghost{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+
+  /* ---------- APPROACH (初動まとめ) VIEW ---------- */
+  .approach-hero{ padding:24px 0 6px; }
+  .approach-hero .eyebrow{ font-size:12px; font-weight:700; color:var(--primary); letter-spacing:.1em; text-transform:uppercase;}
+  .approach-hero h1{ font-size:22px; font-weight:900; margin-top:8px; }
+  .approach-hero p{ font-size:13.5px; color:var(--ink-soft); margin-top:8px; }
+
+  .goal-note{
+    margin-top:18px; padding:16px 18px; border-radius:14px;
+    background:var(--accent-tint); border:1.5px solid var(--accent);
+  }
+  .goal-note .gn-label{ font-size:12px; font-weight:700; letter-spacing:.06em; color:var(--accent); text-transform:uppercase; }
+  .goal-note .gn-body{ font-size:13.5px; color:var(--ink); margin-top:6px; line-height:1.7; }
+
+  .flow{ margin-top:22px; position:relative; }
+  .flow-step{ display:flex; gap:14px; position:relative; padding-bottom:22px; }
+  .flow-step:last-child{ padding-bottom:0; }
+  .flow-step .rail{ display:flex; flex-direction:column; align-items:center; flex:none; }
+  .flow-step .node{
+    width:32px; height:32px; border-radius:50%; background:var(--primary); color:var(--on-solid);
+    display:flex; align-items:center; justify-content:center; font-weight:900; font-size:13px;
+    font-family:"Zen Kaku Gothic New",sans-serif; flex:none; z-index:1;
+  }
+  .flow-step .stem{ width:2px; flex:1; background:var(--line); margin-top:2px; }
+  .flow-step .content{ flex:1; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px 16px; box-shadow:var(--shadow); margin-top:1px;}
+  .flow-step .content h3{ font-size:14.5px; font-weight:700; }
+  .flow-step .content p{ font-size:13px; color:var(--ink-soft); margin-top:5px; }
+
+  .axis-section-title{ font-size:16px; font-weight:700; color:var(--ink); margin:32px 0 6px; }
+  .axis-section-note{ font-size:13px; color:var(--ink-soft); margin:0 0 16px; }
+
+  .axis-card{
+    background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--primary);
+    border-radius:14px; padding:16px 18px; margin-bottom:14px; box-shadow:var(--shadow);
+  }
+  .axis-card.pattern{ border-left-color:var(--cat-pattern); }
+  .axis-card.danger{ border-left-color:var(--cat-danger); }
+  .axis-card.chronic{ border-left-color:var(--cat-chronic); }
+  .axis-head{ display:flex; align-items:center; gap:9px; margin-bottom:8px; }
+  .axis-dot{ width:9px; height:9px; border-radius:50%; flex:none; background:var(--primary); }
+  .axis-card.pattern .axis-dot{ background:var(--cat-pattern); }
+  .axis-card.danger .axis-dot{ background:var(--cat-danger); }
+  .axis-card.chronic .axis-dot{ background:var(--cat-chronic); }
+  .axis-head h3{ font-size:15px; font-weight:700; color:var(--ink); }
+  .axis-intro{ font-size:13.5px; color:var(--ink-soft); margin:0 0 12px; line-height:1.7; }
+  .axis-steps{ margin:0 0 12px; padding-left:20px; list-style:none; display:flex; flex-direction:column; gap:11px; }
+  .axis-steps li{ font-size:14px; line-height:1.75; }
+  .axis-steps li b{ display:block; color:var(--ink); font-weight:700; margin-bottom:3px; }
+  .axis-steps li span{ color:var(--ink-soft); }
+  .axis-note{
+    background:var(--surface-2); border-radius:10px; padding:11px 13px;
+    font-size:13.5px; color:var(--ink); line-height:1.65; margin-bottom:9px;
+  }
+  .axis-refs{ font-size:11px; color:var(--ink-faint); }
+
+  .approach-foot{
+    margin-top:26px; padding:16px 18px; background:var(--primary-tint); border-radius:14px;
+    font-size:13px; color:var(--primary-strong); text-align:center; font-weight:700;
+  }
+
+  .global-note{
+    margin-top:20px; padding:16px 18px; border-radius:14px;
+    background:var(--surface-2); border:1px solid var(--line);
+  }
+  .global-note .gl-label{ font-size:11.5px; font-weight:700; letter-spacing:.06em; color:var(--ink-faint); text-transform:uppercase; margin-bottom:6px; }
+  .global-note p{ font-size:13px; color:var(--ink-soft); line-height:1.75; margin:0; }
+
+  .disclaimer{ margin-top:30px; padding:14px 16px; font-size:11.5px; color:var(--ink-faint); line-height:1.7; border-top:1px solid var(--line); }
+
+  a{color:var(--primary);}
+  button:focus-visible, textarea:focus-visible, .case-card:focus-visible{ outline:2px solid var(--primary); outline-offset:2px; }
+
+  @media (max-width:380px){
+    .assess-btn{ font-size:11px; padding:12px 3px; min-height:44px; }
+  }
+
+  @media (hover:hover){
+    .case-card:hover{ border-color:var(--primary); }
+    .summary-cta:hover{ background:var(--primary-tint); filter:brightness(0.97); }
+    .review-pill-btn:hover{ filter:brightness(0.95); }
+    .reveal-btn:hover{ filter:brightness(1.08); }
+    .assess-btn:hover{ border-color:var(--primary); }
+    .nav-btn.primary:hover{ filter:brightness(1.08); }
+    .nav-btn.ghost:hover{ border-color:var(--primary); }
+    .topbar .back:hover{ text-decoration:underline; }
+  }
+</style>
+</head>
+<body>
+
+<div id="app"></div>
+<script>
+(function(){
+  "use strict";
+
+  var CAT_LABEL = { pattern:"AKIの病型分類と鑑別の基本", danger:"見逃してはいけない重症・敗血症関連AKI", chronic:"薬剤・造影剤に伴う予防可能なAKI" };
+  var CAT_BADGE = { pattern:"型", danger:"急", chronic:"薬" };
+
+  var CASES = [
+    {
+      id:"prerenal_dehydration", num:1, cat:"pattern", tag:"基本・病型分類",
+      title:"嘔吐下痢による脱水 ― 腎前性AKIとFENaの基本", hint:"78歳男性・3日間の嘔吐下痢・降圧薬とループ利尿薬を内服中",
+      vignette:"78歳男性。高血圧と軽度の心不全の既往があり、アムロジピン、エナラプリル、フロセミド20mg/日を内服中。3日前からのウイルス性胃腸炎による嘔吐・下痢が持続し、経口摂取もほとんどできていない。本日、めまいとふらつきを主訴に外来を受診した。血圧98/62mmHg(臥位)、起立負荷で収縮期血圧が20mmHg以上低下する。脈拍98/分。皮膚のツルゴール低下、口腔粘膜の乾燥を認める。普段の内服はいつも通り継続していた。",
+      labs:[ {k:"Cr(今回)",v:"2.1",u:"mg/dL",abn:"high"}, {k:"Cr(3か月前)",v:"0.9",u:"mg/dL",abn:"normal"}, {k:"BUN",v:"58",u:"mg/dL",abn:"high"}, {k:"Na",v:"138",u:"mEq/L",abn:"normal"}, {k:"K",v:"4.6",u:"mEq/L",abn:"normal"}, {k:"尿Na",v:"8",u:"mEq/L",abn:"low"} ],
+      finding:"身体所見:意識清明、心音・呼吸音に異常なし、下腿浮腫なし。",
+      prompts:{
+        severity:{ label:"バイタルサインと検査値から、この患者のAKIの重症度をどう評価するか", ph:"ベースラインCrとの比較、KDIGO病期分類など…" },
+        pattern:{ label:"BUN/Cr比や尿検査所見から、どの病型のAKIと考えるか", ph:"腎前性・腎性・腎後性の分類、FENaの計算など…" },
+        workup:{ label:"原因を確定し、他の病型を除外するために何を確認するか", ph:"内服薬の見直し、尿検査、腎エコーなど…" },
+        action:{ label:"今すぐ行うべき対応と、内服薬の扱いをどうするか", ph:"輸液の選択、腎排泄性薬剤の減量・休薬基準など…" }
+      },
+      answer:{
+        severity:["<mark>ベースラインCr 0.9mg/dLに対し今回2.1mg/dLで2.0〜2.9倍への上昇があり、KDIGOステージ2</mark>に該当する(尿量の情報があればステージ判定に加味する)。7日以内の変化としてAKIの定義(ベースラインの1.5倍以上、または48時間以内に0.3mg/dL以上の上昇)を満たす","起立性低血圧・頻脈・皮膚ツルゴール低下という<mark>循環血液量減少を示す身体所見</mark>があり、緊急透析を要する所見(乏尿・高度な溶質過剰など)は今のところ認めない"],
+        pattern:["<mark>BUN/Cr比 = 58÷2.1 ≈ 27.6で20を超えており、腎前性を示唆</mark>する(腎性ではBUN/Cr比は通常10〜15程度にとどまることが多い)","<mark>尿中Na 8mEq/Lと低値であり、Naを再吸収して体液量を保とうとする腎の反応が保たれている</mark>ことを示し、尿細管自体の障害(ATN)ではなく腎前性を支持する所見","<mark>FENa = (血清Cr×尿Na)÷(血清Na×尿Cr)×100</mark>で計算する。<mark>FENa<1%は腎前性、>2%はATNを示唆</mark>する目安だが、<mark>この1%/2%というカットオフは乏尿性AKIかつ利尿薬非使用・CKD非合併の患者で検証されたものであり、利尿薬内服中や非乏尿性のケースでは信頼性が低下する</mark>ことに注意する"],
+        workup:["<mark>内服薬を確認する。ACE阻害薬(エナラプリル)は輸出細動脈を拡張させ、利尿薬(フロセミド)は体液量減少を助長するため、脱水と重なるとGFRを一段と低下させる</mark>","尿検査(尿沈渣・尿蛋白)を確認し、<mark>顆粒円柱や尿細管上皮円柱がないか</mark>を見て腎性(ATN)の可能性を除外する","腎エコーで<mark>水腎症の有無を確認し腎後性を除外</mark>する(高齢男性では前立腺肥大による尿閉も念頭に置く)"],
+        action:["<mark>細胞外液補充液(生理食塩水または乳酸/酢酸リンゲル液)で速やかに輸液</mark>し、循環血液量を是正する。心不全の既往があるため急速すぎる負荷にならないよう心肺所見を見ながら調整する","<mark>体調不良・経口摂取不良時は腎排泄性薬剤(ACE阻害薬/ARB、利尿薬、NSAIDs)を一時的に中止する、いわゆる「シックデイルール」</mark>を説明し、経口摂取が回復するまで休薬する","<mark>輸液への反応(Crの改善)を数日以内に再評価</mark>し、改善しない場合は腎性・腎後性の要素を再検討して腎臓内科へ相談する"]
+      },
+      rx:["生理食塩水または乳酸/酢酸リンゲル液を500mL程度から開始し、循環動態と心肺所見を見ながら投与速度を調整する","エナラプリル・フロセミドは経口摂取が安定し脱水が是正されるまで休薬し、腎機能・血圧を見ながら再開時期を判断する","改善が乏しい場合や電解質異常(高K血症など)を伴う場合は腎臓内科紹介を検討する"],
+      pitfall:"<mark>「高齢者のCr上昇は年齢のせい」と経過観察のみで済ませたり、逆に「腎前性だから輸液だけしていればよい」と内服薬の見直しを怠る</mark>のはいずれも危険。腎前性AKIは是正が遅れれば虚血性のATNに移行しうるため、原因(脱水)の是正と腎排泄性薬剤の一時休薬を両方行う。",
+      pearl:["<mark>AKIの定義はベースラインCrの1.5倍以上(7日以内)、または48時間以内に0.3mg/dL以上の上昇、あるいは尿量低下</mark>(KDIGO基準)","<mark>BUN/Cr比>20、尿Na低値、FENa<1%は腎前性を示唆</mark>する所見だが、いずれも単独では確定できず、利尿薬使用中やCKD合併例では信頼性が低下する","<mark>ACE阻害薬/ARB・利尿薬・NSAIDsは体調不良時に一時休薬する「シックデイルール」</mark>を平時から患者に説明しておくことがAKI予防につながる","腎前性AKIは是正が遅れると<mark>急性尿細管壊死(ATN)に移行しうる</mark>ため、早期の体液量是正が重要"],
+      refs:[ {author:"Kidney Disease: Improving Global Outcomes (KDIGO) Acute Kidney Injury Work Group.", title:"KDIGO Clinical Practice Guideline for Acute Kidney Injury", source:"Kidney Int Suppl 2(1):1-138", year:"2012", url:"https://kdigo.org/wp-content/uploads/2016/10/KDIGO-2012-AKI-Guideline-English.pdf"}, {author:"AKI（急性腎障害）診療ガイドライン作成委員会.", title:"AKI（急性腎障害）診療ガイドライン2016", source:"日本腎臓学会・日本集中治療医学会・日本透析医学会・日本急性血液浄化学会・日本小児腎臓病学会", year:"2016", url:"https://cdn.jsn.or.jp/guideline/pdf/419-533.pdf"}, {author:"Carvounis CP, Nisar S, Guro-Razuman S.", title:"Significance of the fractional excretion of urea in the differential diagnosis of acute renal failure", source:"Kidney Int 62:2223-2229", year:"2002", url:"https://pubmed.ncbi.nlm.nih.gov/12427149/"} ]
+    },
+    {
+      id:"triple_whammy", num:2, cat:"chronic", tag:"薬剤性・予防可能",
+      title:"3剤併用(トリプルワミー)による薬剤性AKI", hint:"82歳女性・変形性膝関節症でNSAID開始後・ARBとループ利尿薬を内服中",
+      vignette:"82歳女性。高血圧に対しカンデサルタン(ARB)とフロセミド20mg/日を内服中。2週間前、変形性膝関節症の痛みに対し整形外科でロキソプロフェン(NSAID)を1日3回内服するよう処方された。ここ数日の倦怠感と食欲低下を主訴に受診した。血圧132/78mmHg、脈拍76/分。水分摂取は普段通りできており、明らかな脱水所見や浮腫は目立たない。",
+      labs:[ {k:"Cr(今回)",v:"2.4",u:"mg/dL",abn:"high"}, {k:"Cr(2週間前)",v:"1.0",u:"mg/dL",abn:"normal"}, {k:"K",v:"5.6",u:"mEq/L",abn:"high"}, {k:"Na",v:"138",u:"mEq/L",abn:"normal"} ],
+      finding:"身体所見:皮膚ツルゴール・粘膜湿潤は保たれ、明らかな脱水所見はない。下腿浮腫なし。",
+      prompts:{
+        severity:{ label:"検査値から、この患者のAKIの重症度と緊急性をどう評価するか", ph:"KDIGO病期、高K血症の心電図評価など…" },
+        pattern:{ label:"内服薬の変化と時系列から、原因としてどの機序を考えるか", ph:"NSAID・ARB・利尿薬それぞれの腎血行動態への影響など…" },
+        workup:{ label:"他の原因を除外し、原因薬剤を特定するために何を確認するか", ph:"内服薬歴の詳細な聴取、体液量評価、腎エコーなど…" },
+        action:{ label:"原因薬剤への対応と、今後の再発予防をどう組み立てるか", ph:"どの薬を中止するか、再開の可否、患者教育など…" }
+      },
+      answer:{
+        severity:["<mark>ベースラインCr 1.0mg/dLに対し今回2.4mg/dLで2.4倍に上昇しておりKDIGOステージ2</mark>に該当する。<mark>K 5.6mEq/Lの高カリウム血症も伴い</mark>、心電図でテント状T波などの変化がないか確認する緊急性がある"],
+        pattern:["<mark>NSAIDは腎血流を保つプロスタグランジン産生を阻害して輸入細動脈を収縮させ、ARBは輸出細動脈を拡張させる</mark>。利尿薬による体液量減少が加わると、この3剤が糸球体濾過圧を保つ代償機構を同時に阻害し、<mark>明らかな脱水がなくても血行動態性(腎前性)のAKIを起こしうる</mark>(いわゆる「トリプルワミー」)","<mark>NSAID開始から2週間というタイミング</mark>が薬剤性を強く示唆し、他の新規薬剤や飲水量の変化がないかも確認する"],
+        workup:["<mark>内服薬歴を日付とともに詳細に聴取</mark>し、NSAID(市販薬・湿布も含む)の使用、ARB/利尿薬の用量変更がないかを確認する","体液量評価(起立性低血圧の有無、皮膚所見)を行い、<mark>明らかな脱水所見に乏しいことがトリプルワミーを積極的に疑う根拠</mark>となる","腎エコーで水腎症がないか確認し腎後性を除外する。尿検査で尿細管障害を示す所見(顆粒円柱など)がないかも確認する"],
+        action:["<mark>NSAIDを直ちに中止</mark>する。高カリウム血症を伴う場合は<mark>ARBも一時休薬</mark>し、利尿薬は体液量評価のうえ継続可否を判断する","<mark>K 5.6mEq/Lで心電図変化があれば、グルコン酸カルシウム(心筋保護)、インスリン+ブドウ糖(細胞内シフト)などの緊急処置を検討</mark>する。心電図変化がなくても頻回のモニタリングを行う","<mark>腎機能・K値の改善を数日で再評価</mark>し、改善すればARB・利尿薬の再開時期を慎重に判断する。今後は変形性膝関節症の鎮痛にNSAID以外の選択肢(アセトアミノフェンなど)を優先し、<mark>NSAIDを新規処方する際は腎機能とARB/利尿薬併用の有無を必ず確認する</mark>体制を作る"]
+      },
+      rx:["NSAID(ロキソプロフェンなど)を中止し、鎮痛にはアセトアミノフェンなど腎への影響が少ない薬剤への変更を検討する","高カリウム血症に心電図変化を伴う場合は10%グルコン酸カルシウム10mLを静注し、レギュラーインスリン+ブドウ糖投与で細胞内シフトを図る","ARB・利尿薬は腎機能・K値・体液量を見ながら数日以内に再開可否を判断し、自己判断での長期中断は避ける"],
+      pitfall:"<mark>「明らかな脱水がないからトリプルワミーは考えにくい」と判断してしまう</mark>のは誤り。NSAID+ACE阻害薬/ARB+利尿薬の組み合わせは、体液量が保たれていても腎血行動態を阻害しAKIを起こしうる。逆に<mark>原因薬剤を中止せずK低下薬だけで様子を見る</mark>のも根本原因を放置することになる。",
+      pearl:["<mark>NSAID+ACE阻害薬/ARB+利尿薬の3剤併用(トリプルワミー)はAKIリスクを約3割高める</mark>とされ、高齢者や新規NSAID開始時は特に注意する","<mark>明らかな脱水がなくても、この3剤の組み合わせだけで血行動態性AKIが起こりうる</mark>ことを知っておく","新規NSAID処方時は<mark>腎機能とARB/ACE阻害薬・利尿薬の併用歴を必ず確認</mark>し、可能なら他の鎮痛薬を優先する","体調不良時にACE阻害薬/ARB・利尿薬・NSAIDsを一時休薬する<mark>「シックデイルール」</mark>の患者教育もあわせて行う"],
+      refs:[ {title:"Acute Kidney Injury secondary to a combination of renin-angiotensin system inhibitors, diuretics and NSAIDS: \"The Triple Whammy\"", source:"Nefrologia (Nefrología Latinoamericana)", year:"2015", url:"https://www.sciencedirect.com/science/article/pii/S2013251415000139"}, {title:"Avoiding the \"triple whammy\" in primary care: ACE inhibitor/ARB + diuretic + NSAID", source:"Best Practice Advocacy Centre New Zealand (bpacnz)", year:"2018", url:"https://bpac.org.nz/2018/docs/triple-whammy.pdf"}, {author:"Kidney Disease: Improving Global Outcomes (KDIGO) Acute Kidney Injury Work Group.", title:"KDIGO Clinical Practice Guideline for Acute Kidney Injury", source:"Kidney Int Suppl 2(1):1-138", year:"2012", url:"https://kdigo.org/wp-content/uploads/2016/10/KDIGO-2012-AKI-Guideline-English.pdf"} ]
+    },
+    {
+      id:"septic_aki", num:3, cat:"danger", tag:"重症・敗血症関連",
+      title:"敗血症性ショックに伴うAKI ― 循環管理と腎保護", hint:"74歳男性・市中肺炎による敗血症性ショックでICU管理中・乏尿",
+      vignette:"74歳男性。市中肺炎による敗血症性ショックの診断でICUに入室した。輸液蘇生とノルアドレナリン投与により平均動脈圧は65mmHg以上を維持できているが、入室後6時間の尿量は0.3mL/kg/時にとどまっている。入室時に開始された広域抗菌薬(バンコマイシン+タゾバクタム/ピペラシリン)を継続中。造影CTの追加検査が放射線科から提案されている。",
+      labs:[ {k:"Cr(入室時)",v:"1.0",u:"mg/dL",abn:"normal"}, {k:"Cr(6時間後)",v:"1.6",u:"mg/dL",abn:"high"}, {k:"乳酸",v:"3.2",u:"mmol/L",abn:"high"}, {k:"K",v:"4.2",u:"mEq/L",abn:"normal"} ],
+      finding:"循環動態:平均動脈圧68mmHg(ノルアドレナリン0.2γ)、尿量0.3mL/kg/時が6時間持続。四肢冷感なし。",
+      prompts:{
+        severity:{ label:"尿量とCrの変化から、AKIの重症度をどう評価するか", ph:"KDIGO病期分類における尿量基準、乏尿の持続時間など…" },
+        pattern:{ label:"敗血症性ショックに伴うAKIの機序をどう考えるか", ph:"腎血流低下だけでは説明しきれない機序、炎症の関与など…" },
+        workup:{ label:"腎機能をさらに悪化させうる要因として、何を見直すべきか", ph:"抗菌薬の組み合わせ、造影剤、他の腎毒性薬剤など…" },
+        action:{ label:"腎保護の観点から、循環管理と薬剤調整をどう行うか", ph:"目標血圧、抗菌薬の腎機能調整、造影剤使用の判断など…" }
+      },
+      answer:{
+        severity:["<mark>尿量0.3mL/kg/時が6時間持続しており、KDIGOステージ1の尿量基準(<0.5mL/kg/時が6〜12時間)を満たす。Crも1.0→1.6mg/dLへ1.6倍に上昇しておりステージ2相当</mark>に該当する。<mark>Cr基準と尿量基準は独立して評価し、より重症な方を採用する</mark>"],
+        pattern:["<mark>敗血症性AKIは腎前性(循環不全)の要素だけでなく、炎症性サイトカインや微小循環障害による直接的な尿細管障害が関与</mark>する複合的な病態であり、単純な脱水による腎前性AKIとは機序が異なる。<mark>平均動脈圧が目標(65mmHg以上)を達成していても腎機能悪化が進むことがある</mark>のはこのため"],
+        workup:["<mark>現在の抗菌薬(バンコマイシン+タゾバクタム/ピペラシリン)の組み合わせは、それぞれ単独より腎毒性リスクを高めるとの報告があり、腎機能・血中濃度をこまめに確認</mark>する","<mark>造影CTを追加する場合は、造影剤による腎機能悪化リスクの上乗せと診断上のベネフィットを比較</mark>し、代替(単純CT・エコー)で目的を達成できないか放射線科・主治医で協議する","電解質(特にK)、乳酸の推移を継続的に確認する"],
+        action:["<mark>ノルアドレナリンで平均動脈圧65mmHg以上を維持し、輸液は反応性(動的指標)を見ながら過不足のないよう調整</mark>する。目標血圧をむやみに上げても腎保護効果は証明されていない","<mark>腎機能に応じてバンコマイシンの投与量・投与間隔を調整し血中濃度をモニタリング</mark>する。可能であれば培養結果に基づき腎毒性の低い抗菌薬にde-escalationする","<mark>造影検査が真に必要か再検討し、必要な場合は代替できない診断的価値があるかを主治医・放射線科で判断</mark>する。緊急性が高くない場合はタイミングも含めて検討する","乏尿・Cr上昇が進行し<mark>AEIOU(重度アシドーシス、電解質異常、中毒、体液過剰、尿毒症症状)のいずれかに該当すれば、腎代替療法(RRT)導入</mark>を腎臓内科・集中治療科と協議する"]
+      },
+      rx:["ノルアドレナリンを第一選択の昇圧薬として平均動脈圧65mmHg以上を目標に調整し、輸液は動的指標(輸液反応性)を見ながら追加投与する","バンコマイシンはトラフ値またはAUC/MICガイド下TDMを行い、腎機能に応じて投与量・間隔を調整する。可能なら培養結果に基づき腎毒性の低い抗菌薬にde-escalationする","造影剤使用は診断上の必要性とAKI増悪リスクを個別に比較検討し、代替検査で代用できないか放射線科と相談する"],
+      pitfall:"<mark>「平均動脈圧が目標に達しているから腎機能は大丈夫」と安心してしまう</mark>のは誤り。敗血症性AKIは循環動態の是正だけでは防ぎきれない炎症性・微小循環性の機序が関わる。また<mark>腎毒性のある抗菌薬の組み合わせや造影剤の必要性を見直さないまま漫然と継続する</mark>のも腎機能悪化を助長する。",
+      pearl:["<mark>敗血症性AKIは循環不全(腎前性要素)と炎症・微小循環障害による直接的尿細管障害が複合</mark>する病態であり、血圧が保たれていても進行しうる","KDIGO病期分類は<mark>Cr基準と尿量基準を独立して評価し、いずれか重症な方でステージを判定</mark>する","<mark>腎毒性のある薬剤(バンコマイシン+タゾバクタム/ピペラシリンの組み合わせ、造影剤など)は必要性を都度見直し</mark>、可能な限り減量・変更・回避する","<mark>RRT導入の判断はAEIOU(重度アシドーシス・電解質異常・中毒・体液過剰・尿毒症症状)を目安</mark>に、腎臓内科・集中治療科と早めに協議する"],
+      refs:[ {author:"Kidney Disease: Improving Global Outcomes (KDIGO) Acute Kidney Injury Work Group.", title:"KDIGO Clinical Practice Guideline for Acute Kidney Injury", source:"Kidney Int Suppl 2(1):1-138", year:"2012", url:"https://kdigo.org/wp-content/uploads/2016/10/KDIGO-2012-AKI-Guideline-English.pdf"}, {author:"Navalkele B, Pogue JM, Karino S, et al.", title:"Risk of acute kidney injury in patients on concomitant vancomycin and piperacillin-tazobactam compared to those on vancomycin and cefepime", source:"Clin Infect Dis 64(2):116-123", year:"2017", url:"https://pubmed.ncbi.nlm.nih.gov/27986669/"}, {title:"Sepsis-associated acute kidney injury—treatment standard", source:"Nephrol Dial Transplant 39(1):26-35", year:"2024", url:"https://academic.oup.com/ndt/article/39/1/26/7218568"} ]
+    },
+    {
+      id:"postrenal_bph", num:4, cat:"pattern", tag:"腎後性・可逆性",
+      title:"尿閉による腎後性AKI ― 見逃せば重症化、対応すれば可逆的", hint:"81歳男性・前立腺肥大の既往・排尿困難増悪後に無尿",
+      vignette:"81歳男性。数年前から前立腺肥大症を指摘され経過観察中。市販の総合感冒薬(抗コリン作用のある成分を含む)を3日前から内服していた。本日、下腹部痛と丸1日排尿がないことに気づき受診した。血圧148/86mmHg、脈拍88/分。下腹部は膨隆し、恥骨上に圧痛を伴う腫瘤様の膨隆を触知する。",
+      labs:[ {k:"Cr(今回)",v:"3.8",u:"mg/dL",abn:"high"}, {k:"Cr(半年前)",v:"1.1",u:"mg/dL",abn:"normal"}, {k:"K",v:"5.2",u:"mEq/L",abn:"high"} ],
+      finding:"身体所見:恥骨上の膀胱部に球状の膨隆と圧痛を触知(尿閉を示唆)。直近24時間の排尿はほぼなし。下腿浮腫なし。",
+      prompts:{
+        severity:{ label:"検査値と身体所見から、この患者の重症度をどう評価するか", ph:"KDIGO病期、高K血症・無尿の緊急性など…" },
+        pattern:{ label:"身体所見と経過から、AKIの病型をどう考えるか", ph:"腎後性を示唆する所見、前立腺肥大・薬剤の関与など…" },
+        workup:{ label:"腎後性AKIであることを確定するために、何を確認・実施するか", ph:"導尿・膀胱スキャン、腎エコーでの水腎症評価など…" },
+        action:{ label:"閉塞解除後に注意すべき合併症と、今後の対応をどう組み立てるか", ph:"導尿後の尿量モニタリング、電解質補正、専門科紹介など…" }
+      },
+      answer:{
+        severity:["<mark>ベースラインCr 1.1mg/dLに対し今回3.8mg/dLと3倍を超えて上昇しておりKDIGOステージ3</mark>に該当し、<mark>K 5.2mEq/Lの高カリウム血症も伴う</mark>ため緊急対応を要する","無尿と恥骨上の膨隆という<mark>典型的な急性尿閉の身体所見</mark>があり、身体診察だけで腎後性を強く疑える状態"],
+        pattern:["<mark>前立腺肥大症の既往に、抗コリン作用のある感冒薬内服が加わり急性尿閉を誘発</mark>したと考えられる。腎後性AKIは<mark>両側の尿路(または機能的単腎)が閉塞して初めて腎機能に影響する</mark>ため、片側性の閉塞(片側尿管結石など、対側腎が機能している場合)では通常AKIは起こらないことも覚えておく"],
+        workup:["<mark>まず導尿(または膀胱スキャンで残尿量を確認後に導尿)を行う。尿閉の解除自体が診断的処置にもなる</mark>","腎エコーで<mark>両側の水腎症の有無を確認</mark>し、閉塞部位(前立腺・尿管・後腹膜腫瘍など)の評価につなげる","高カリウム血症について心電図を確認する"],
+        action:["<mark>導尿によりまず尿閉を解除し、高カリウム血症に心電図変化があれば同時にグルコン酸カルシウム・インスリン+ブドウ糖などの緊急処置を行う</mark>","<mark>閉塞解除後は数時間〜数日間、post-obstructive diuresis(尿量200mL/時が2時間以上持続、または24時間で3L以上の多尿)が起こりうる</mark>ため、尿量・電解質(特にNa、K)・体液量を頻回にモニタリングし、必要に応じて輸液で補う","<mark>原因となった抗コリン作用のある薬剤は中止</mark>し、前立腺肥大症については泌尿器科へ紹介してα1遮断薬や手術適応を検討する"]
+      },
+      rx:["導尿カテーテルを留置し尿閉を解除する。強い抵抗がある場合は無理をせず泌尿器科に相談する","閉塞解除後は尿量が200mL/時を2時間以上、または24時間で3L以上持続する場合はpost-obstructive diuresisとして電解質を含む輸液で補正し、頻回に尿量・電解質をモニタリングする","抗コリン薬など尿閉の誘因となった薬剤は中止し、前立腺肥大症に対しα1遮断薬の開始や泌尿器科紹介を検討する"],
+      pitfall:"<mark>「高齢男性のCr上昇=腎前性か腎性だろう」と決めつけ、身体診察(膀胱の触診)や導尿を後回しにする</mark>のは典型的な誤り。腎後性AKIは対応すれば速やかに改善しうる可逆性の高い病型であり、見逃すと不可逆的な腎障害に進行しうる。逆に<mark>閉塞解除後のpost-obstructive diuresisを見落とし、多尿による脱水・電解質異常を放置する</mark>のも危険。",
+      pearl:["<mark>腎後性AKIを疑ったら、まず身体診察(膀胱の触診・叩打痛)と導尿・膀胱スキャンで評価</mark>する。腎エコーでの水腎症確認も重要だが、導尿自体が診断的かつ治療的処置になる","<mark>両側性(または機能的単腎の)閉塞で初めてAKIが起こる</mark>ことを理解しておく","<mark>閉塞解除後のpost-obstructive diuresis(200mL/時×2時間以上、または24時間で3L以上)</mark>を見越して尿量・電解質を頻回にモニタリングする","抗コリン作用のある市販薬は<mark>前立腺肥大症患者の急性尿閉の誘因</mark>になりうる"],
+      refs:[ {title:"Post-obstructive Diuresis: A Cautionary Tale", source:"Methodist DeBakey Cardiovasc J / PMC", url:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6948098/"}, {author:"Kidney Disease: Improving Global Outcomes (KDIGO) Acute Kidney Injury Work Group.", title:"KDIGO Clinical Practice Guideline for Acute Kidney Injury", source:"Kidney Int Suppl 2(1):1-138", year:"2012", url:"https://kdigo.org/wp-content/uploads/2016/10/KDIGO-2012-AKI-Guideline-English.pdf"}, {author:"AKI（急性腎障害）診療ガイドライン作成委員会.", title:"AKI（急性腎障害）診療ガイドライン2016", source:"日本腎臓学会・日本集中治療医学会・日本透析医学会・日本急性血液浄化学会・日本小児腎臓病学会", year:"2016", url:"https://cdn.jsn.or.jp/guideline/pdf/419-533.pdf"} ]
+    },
+    {
+      id:"contrast_aki", num:5, cat:"chronic", tag:"予防可能・造影剤関連",
+      title:"CKD患者への造影CT ― 造影剤腎症の予防策とリスク評価", hint:"70歳女性・糖尿病性腎症でeGFR32・急性虫垂炎疑いで造影CTを検討",
+      vignette:"70歳女性。2型糖尿病に伴う糖尿病性腎症でCKDステージG3b(直近のeGFR 32mL/min/1.73m²、Cr 1.5mg/dL)の診断で腎臓内科に通院中。右下腹部痛で救急外来を受診し、急性虫垂炎が疑われ、外科からヨード造影剤を用いた腹部造影CTが提案された。バイタルサインは安定しており、緊急性の高いショック状態ではない。メトホルミンを内服中。",
+      labs:[ {k:"Cr",v:"1.5",u:"mg/dL",abn:"high"}, {k:"eGFR",v:"32",u:"mL/min/1.73m²",abn:"low"}, {k:"K",v:"4.4",u:"mEq/L",abn:"normal"} ],
+      finding:"身体所見:右下腹部に限局した圧痛と反跳痛を認めるが、バイタルサインは安定。",
+      prompts:{
+        severity:{ label:"この患者の腎機能から、造影剤腎症(CI-AKI)のリスクをどう評価するか", ph:"eGFR・糖尿病などの危険因子、緊急度とのバランスなど…" },
+        pattern:{ label:"造影剤腎症の定義とリスク因子をどう整理するか", ph:"KDIGO定義、糖尿病・脱水・高浸透圧造影剤などの因子…" },
+        workup:{ label:"造影CTを行う前に確認・準備すべきことは何か", ph:"代替検査の検討、輸液プロトコル、メトホルミンの扱いなど…" },
+        action:{ label:"造影を実施する場合、予防策と経過観察をどう組み立てるか", ph:"輸液の種類・タイミング、造影後のフォローなど…" }
+      },
+      answer:{
+        severity:["<mark>eGFR 32mL/min/1.73m²(CKD G3b)に加え糖尿病があり、造影剤腎症(CI-AKI)の代表的な危険因子(腎機能低下・糖尿病)を2つ有する</mark>。ただしバイタルサインは安定しており、<mark>虫垂炎の評価という臨床的必要性とCI-AKIリスクを天秤にかけて判断</mark>する状況"],
+        pattern:["<mark>CI-AKIはKDIGO定義上「造影剤投与後48時間以内にCrが0.3mg/dL以上上昇、または7日以内に1.5倍以上上昇、あるいは尿量低下」を満たす場合</mark>と定義される。<mark>危険因子は腎機能低下(特にeGFR<60)、糖尿病、脱水、高齢、高浸透圧造影剤の使用、短期間の反復投与</mark>などが知られている"],
+        workup:["<mark>造影の必要性を外科と再確認し、単純CTや超音波など造影を要さない代替検査で診断がつかないか検討</mark>する(本例は虫垂炎評価で造影が有用な場面だが、代替可能性は都度確認する)","<mark>メトホルミンは腎機能低下例・造影剤投与例では乳酸アシドーシスのリスクを避けるため、投与前後で休薬</mark>を検討する","脱水があれば是正し、他の腎毒性薬剤(NSAIDsなど)が併用されていないか確認する"],
+        action:["<mark>腎障害患者におけるヨード造影剤使用に関するガイドライン2018(日本腎臓学会・日本医学放射線学会・日本循環器学会)に基づき、生理食塩液を造影開始6時間前から1mL/kg/時で開始し、造影終了後も1mL/kg/時で6〜12時間継続</mark>する。<mark>緊急例では重曹液を造影開始1時間前から3mL/kg/時、終了後は1mL/kg/時で6時間投与する短時間プロトコル</mark>も選択肢となる","心不全の合併がある場合は<mark>輸液量を減量する</mark>など個別に調整する","<mark>メトホルミンは造影前後で一時休薬</mark>し、腎機能を確認してから再開する","造影後は<mark>数日以内にCrを再検し、CI-AKIの有無を確認</mark>する"]
+      },
+      rx:["生理食塩水を造影開始6時間前から1mL/kg/時で開始し、終了後も1mL/kg/時で6〜12時間投与する(緊急時は重曹液3mL/kg/時を1時間前から、終了後1mL/kg/時を6時間投与する短時間プロトコルも選択肢)","メトホルミンは造影前後で一時休薬し、腎機能を確認したうえで再開する","低浸透圧・等浸透圧の造影剤を選択し、可能な限り造影剤使用量を必要最小限にとどめる"],
+      pitfall:"<mark>「腎機能が悪いから造影検査は絶対禁忌」と必要な診断的検査を回避してしまう</mark>のも、逆に<mark>「輸液さえしておけば造影剤腎症は防げる」と油断してメトホルミンの休薬など他の予防策を怠る</mark>のも誤り。臨床的必要性とリスクを天秤にかけたうえで、予防策を組み合わせて実施する。",
+      pearl:["<mark>CI-AKIの主な危険因子は腎機能低下(eGFR<60)、糖尿病、脱水、高齢、高浸透圧造影剤</mark>","<mark>予防の第一選択は輸液(生理食塩水)</mark>であり、日本のガイドラインでは造影前6時間・後6〜12時間の1mL/kg/時投与、緊急時は重曹液の短時間プロトコルが示されている","<mark>メトホルミン内服患者では造影前後の休薬</mark>を忘れない","診断上真に造影が必要かを都度再検討し、<mark>代替検査(単純CT・超音波)で目的を達成できないか</mark>を考える"],
+      refs:[ {author:"日本腎臓学会・日本医学放射線学会・日本循環器学会.", title:"腎障害患者におけるヨード造影剤使用に関するガイドライン2018", source:"日本腎臓学会誌 61(7):933-1081", year:"2019", url:"https://cdn.jsn.or.jp/data/guideline-201911.pdf"}, {author:"Kidney Disease: Improving Global Outcomes (KDIGO) Acute Kidney Injury Work Group.", title:"KDIGO Clinical Practice Guideline for Acute Kidney Injury", source:"Kidney Int Suppl 2(1):1-138", year:"2012", url:"https://kdigo.org/wp-content/uploads/2016/10/KDIGO-2012-AKI-Guideline-English.pdf"} ]
+    },
+    {
+      id:"severe_hyperkalemia_rrt", num:6, cat:"danger", tag:"重症・RRT導入判断",
+      title:"乏尿性AKIに合併した高カリウム血症とRRT導入の判断", hint:"68歳男性・重症急性膵炎に伴う乏尿性AKI・心電図異常を伴う高カリウム血症",
+      vignette:"68歳男性。重症急性膵炎の診断で入院加療中。第3病日、尿量が過去12時間で100mL程度と著明に減少し、倦怠感とわずかな呼吸苦を訴えている。血圧106/64mmHg、脈拍58/分とやや徐脈。心電図でテント状T波とQRS幅の軽度延長を認める。輸液は前日までにガイドラインに沿った量が投与されている。",
+      labs:[ {k:"Cr",v:"4.6",u:"mg/dL",abn:"high"}, {k:"K",v:"7.2",u:"mEq/L",abn:"high"}, {k:"HCO3",v:"14",u:"mEq/L",abn:"low"}, {k:"pH(動脈血ガス)",v:"7.22",u:"",abn:"low"} ],
+      finding:"身体所見:軽度の呼吸促迫、下腿浮腫なし、意識は清明だが倦怠感が強い。過去12時間の尿量は約100mL。",
+      prompts:{
+        severity:{ label:"検査値と心電図所見から、この患者の重症度をどう評価するか", ph:"KDIGO病期、高K血症の緊急度、代謝性アシドーシスの評価など…" },
+        pattern:{ label:"急性膵炎に合併したAKIとして、どの病型・機序を考えるか", ph:"サードスペースへの体液移動、腎前性から腎性への移行など…" },
+        workup:{ label:"腎代替療法(RRT)の適応を判断するために、何を確認するか", ph:"AEIOUの各項目、輸液反応性の評価など…" },
+        action:{ label:"緊急の高カリウム血症治療とRRT導入の判断をどう組み立てるか", ph:"心筋保護、細胞内シフト、K排泄、RRT依頼のタイミングなど…" }
+      },
+      answer:{
+        severity:["<mark>尿量が12時間で100mL(概ね0.1mL/kg/時未満)と著明な乏尿があり、Cr4.6mg/dLへの上昇と合わせKDIGOステージ3</mark>に該当する。<mark>K7.2mEq/Lに心電図変化(テント状T波、QRS延長)を伴い、pH7.22の代謝性アシドーシスも合併</mark>しており、生命を脅かす緊急事態と判断する"],
+        pattern:["<mark>重症急性膵炎では炎症による血管透過性亢進で血管内から間質へ体液が移動し(サードスペース)、初期は腎前性の要素が強いが、ガイドラインに沿った輸液を行っても改善しない場合は既に急性尿細管壊死(腎性)に移行している</mark>可能性を考える。<mark>「輸液量は足りているのに乏尿が続く」こと自体が腎性への移行を示唆する所見</mark>"],
+        workup:["<mark>RRT導入の適応をAEIOU(重度アシドーシス、電解質異常、中毒、体液過剰、尿毒症症状)の枠組みで評価</mark>する。本例は<mark>E(K7.2mEq/Lに心電図変化を伴う高カリウム血症)とA(pH7.22の代謝性アシドーシス)の2項目を満たし</mark>、緊急RRT適応に該当しうる","<mark>これ以上の輸液で体液過剰(肺水腫)を助長しないか、呼吸状態も含めて評価</mark>する"],
+        action:["<mark>まず10%グルコン酸カルシウム10mLを2〜3分かけて静注し心筋を保護</mark>する(効果は一時的で、カリウムそのものは低下しない)","<mark>レギュラーインスリン10単位を静注しKを細胞内にシフト</mark>させる。血糖が高値でなければブドウ糖を同時投与し、<mark>投与後数時間は低血糖(特に腎機能低下例で遷延しやすい)に注意して血糖をモニタリング</mark>する。ネブライザーでのβ2刺激薬吸入も併用しうる。<mark>いずれも効果は一時的であり、体外への排泄にはならない</mark>","<mark>重度の代謝性アシドーシス(本例のpH7.22)を伴う場合は炭酸水素ナトリウムの投与を考慮</mark>するが、単独での高カリウム血症治療効果は乏しいとされ、主目的はアシドーシス補正と位置づける","<mark>心電図変化を伴う高カリウム血症・重度アシドーシス・乏尿が並存し薬物療法への反応が乏しければ、これらの応急処置と並行して速やかに腎臓内科・集中治療科へRRT導入を相談</mark>する。<mark>薬物療法はRRTまでの時間稼ぎであり、根本的なK排泄にはならない</mark>ことを念頭に置く"]
+      },
+      rx:["10%グルコン酸カルシウム10mLを2〜3分かけて静注(心電図変化が持続すれば5〜10分後に反復可)","レギュラーインスリン10単位を静注し、血糖が高値でなければブドウ糖25〜50gを同時投与、投与後数時間は低血糖に注意して血糖をモニタリングする","上記の応急処置と並行して腎臓内科・集中治療科へRRT導入を相談し、体外へのカリウム除去手段を確保する"],
+      pitfall:"<mark>グルコン酸カルシウムやインスリン+ブドウ糖投与だけで「治療した」と安心してしまう</mark>のは危険。これらはいずれもカリウムを体内で移動させるだけの一時的な処置であり、<mark>体外へ排泄する手段(RRTなど)を並行して準備しなければ再上昇する</mark>。",
+      pearl:["<mark>高カリウム血症の緊急治療は「心筋保護(カルシウム)」→「細胞内シフト(インスリン+ブドウ糖、β2刺激薬)」→「体外排泄(RRTなど)」の順に組み立てる</mark>","<mark>RRT導入の適応はAEIOU(重度アシドーシス・電解質異常・中毒・体液過剰・尿毒症症状)</mark>を目安に判断し、いずれかを満たせば緊急導入を検討する","<mark>K値と心電図所見の相関は必ずしも一定でない</mark>ため、K値だけでなく心電図所見を必ず確認する","重症急性膵炎などサードスペース疾患では<mark>輸液量が十分でも乏尿が続く場合、腎性への移行を疑う</mark>"],
+      refs:[ {author:"Sterns RH, Grieff M, Bernstein PL.", title:"Treatment of hyperkalemia: something old, something new", source:"Kidney Int 89(3):546-554", year:"2016", url:"https://pubmed.ncbi.nlm.nih.gov/26880451/"}, {author:"Kidney Disease: Improving Global Outcomes (KDIGO) Acute Kidney Injury Work Group.", title:"KDIGO Clinical Practice Guideline for Acute Kidney Injury", source:"Kidney Int Suppl 2(1):1-138", year:"2012", url:"https://kdigo.org/wp-content/uploads/2016/10/KDIGO-2012-AKI-Guideline-English.pdf"} ]
+    }
+  ];
+
+  var PROMPT_META = [
+    {key:"severity", num:"①"},
+    {key:"pattern", num:"②"},
+    {key:"workup", num:"③"},
+    {key:"action", num:"④"}
+  ];
+  var DEFAULT_PROMPTS = {
+    severity:{ label:"重症度・危険信号をどう評価するか", ph:"KDIGO病期、尿量、心電図・電解質などから…" },
+    pattern:{ label:"病型と原因の機序をどう鑑別するか", ph:"腎前性・腎性・腎後性の分類、頻度の高い原因など…" },
+    workup:{ label:"どの追加検査・画像を選ぶか", ph:"尿検査・腎エコー・内服薬の見直しなど…" },
+    action:{ label:"初期対応と専門医紹介の基準は何か", ph:"輸液・薬剤調整、RRT相談の基準など…" }
+  };
+  var ICO = { severity:"!", pattern:"⇄", workup:"◎", action:"▶" };
+
+  function getPrompts(c){
+    return PROMPT_META.map(function(m){
+      var override = (c.prompts && c.prompts[m.key]) || {};
+      var base = DEFAULT_PROMPTS[m.key];
+      return { key:m.key, num:m.num, label: override.label || base.label, ph: override.ph || base.ph };
+    });
+  }
+
+  var FLOW = [
+    {t:"まず重症度・危険信号を評価する", d:"KDIGO基準(Cr上昇・尿量低下)で重症度を判定し、高K血症・尿毒症症状・体液過剰などRRTを要する所見がないかを最初に確認する。"},
+    {t:"病型を分類する", d:"病歴・身体所見・BUN/Cr比・尿検査・画像から、腎前性・腎性・腎後性のどれかを判定する。"},
+    {t:"原因を絞り込む", d:"頻度の高い原因(脱水・薬剤性)と見逃すと危険な原因(敗血症・尿路閉塞)の両方を鑑別に挙げ、内服薬を必ず見直す。"},
+    {t:"必要な検査・初期対応を組み立てる", d:"体液量の是正、腎排泄性薬剤の調整、画像検査を行い、専門医紹介・RRT相談の基準を判断する。"}
+  ];
+
+  var AXES = [
+    {
+      cat:"pattern", label:"AKIの病型の見分け方",
+      intro:"AKIを見たら、まず「腎前性」「腎性」「腎後性」のどれかを整理すると原因を絞り込みやすい。",
+      steps:[
+        {t:"①病歴と身体所見からまず疑う", d:"脱水・出血の既往なら<mark>腎前性</mark>、腎毒性物質や虚血の遷延なら<mark>腎性</mark>、排尿症状や前立腺肥大の既往なら<mark>腎後性</mark>をまず疑う。"},
+        {t:"②BUN/Cr比と尿検査を確認する", d:"<mark>BUN/Cr比>20、尿Na低値、顆粒円柱なし</mark>は腎前性を、逆のパターンは腎性(ATN)を示唆する(利尿薬使用中は参考程度にとどめる)。"},
+        {t:"③FENa/FEUreaを計算する", d:"<mark>FENa = (血清Cr×尿Na)÷(血清Na×尿Cr)×100</mark>。FENa<1%で腎前性、>2%でATNを示唆するが、<mark>乏尿性AKIかつ利尿薬非使用の患者でのみ検証されたカットオフ</mark>であることを忘れない。利尿薬使用中はFEUrea(<35%で腎前性、>50%でATN)を代わりに用いる。"},
+        {t:"④画像(腎エコー)で腎後性を除外する", d:"水腎症の有無を必ず確認する。前立腺肥大・腫瘍などによる両側性閉塞は治療可能な原因であり、見逃しを避ける。"}
+      ],
+      note:"FENaやBUN/Cr比は「単独で確定診断できる検査」ではなく、病歴・身体所見と合わせて総合的に病型を推定するための一情報にすぎない。特に非乏尿性AKI・CKD合併・利尿薬使用中はカットオフの信頼性が下がることを常に念頭に置く。",
+      refs:["Carvounis CP, et al. Kidney Int 2002(FEUrea)","KDIGO 2012 AKI Guideline"]
+    },
+    {
+      cat:"danger", label:"見逃してはいけない重症AKIと原因",
+      intro:"AKIを見たら、まず「今すぐ危険な所見・原因はないか」を確認してから病型を考える。",
+      steps:[
+        {t:"①高カリウム血症・代謝性アシドーシス・尿毒症症状・体液過剰を確認する", d:"<mark>AEIOU(Acidosis・Electrolyte・Intoxication・Overload・Uremia)</mark>のいずれかを満たせば緊急のRRT適応を検討する。"},
+        {t:"②敗血症性AKIは循環動態が保たれていても進行しうる", d:"炎症・微小循環障害による直接的な尿細管障害が関与するため、目標血圧の達成だけで安心しない。"},
+        {t:"③腎毒性のある薬剤・造影剤の必要性を都度見直す", d:"アミノグリコシド、バンコマイシン+タゾバクタム/ピペラシリンの組み合わせ、造影剤などは減量・変更・回避を検討する。"},
+        {t:"④RRT導入の判断を先延ばしにしない", d:"薬物療法(カルシウム・インスリン+ブドウ糖など)は時間稼ぎに過ぎず、体外排泄手段(RRT)を並行して準備する。"}
+      ],
+      note:"高カリウム血症の治療は「心筋保護→細胞内シフト→体外排泄」の順で組み立て、薬物療法だけで安心せず腎臓内科・集中治療科への相談を先延ばしにしない。",
+      refs:["Sterns RH, et al. Kidney Int 2016","KDIGO 2012 AKI Guideline"]
+    },
+    {
+      cat:"chronic", label:"薬剤・造影剤に伴う予防可能なAKI",
+      intro:"AKIの一定数は薬剤や検査手技に伴う予防可能なものであり、処方・検査のたびにリスクを見直す習慣が重要。",
+      steps:[
+        {t:"①NSAID+ACE阻害薬/ARB+利尿薬の組み合わせを意識する", d:"いわゆる<mark>トリプルワミー</mark>。明らかな脱水がなくても血行動態性のAKIを起こしうる。"},
+        {t:"②シックデイルールを患者に説明しておく", d:"体調不良・経口摂取不良時はACE阻害薬/ARB・利尿薬・NSAIDsを一時休薬するよう平時から伝えておく。"},
+        {t:"③造影剤使用時はリスク評価と輸液プロトコルを実施する", d:"腎機能低下・糖尿病などの危険因子を確認し、必要な例には<mark>造影前後の生理食塩水投与</mark>を行う。"},
+        {t:"④メトホルミンなど腎排泄性薬剤の休薬基準を確認する", d:"造影剤投与前後の休薬など、施設のプロトコルに沿って対応する。"}
+      ],
+      note:"「脱水がないから大丈夫」「輸液さえしていれば防げる」という単純化はどちらも誤り。複数のリスク要因が重なって初めてAKIが顕在化することが多い。",
+      refs:["Fournier JP, et al.(Triple Whammy)","腎障害患者におけるヨード造影剤使用に関するガイドライン2018"]
+    }
+  ];
+
+  var STORE_KEY = "aki_progress_v1";
+  var DRAFT_KEY = "aki_drafts_v1";
+
+  function loadProgress(){
+    try{
+      var p = JSON.parse(localStorage.getItem(STORE_KEY));
+      return (p && typeof p === "object" && !Array.isArray(p)) ? p : {};
+    }catch(e){ return {}; }
+  }
+  function saveProgress(p){
+    try{ localStorage.setItem(STORE_KEY, JSON.stringify(p)); return true; }catch(e){ return false; }
+  }
+  function loadDrafts(){
+    try{
+      var raw = JSON.parse(localStorage.getItem(DRAFT_KEY));
+      if(!raw || typeof raw !== "object" || Array.isArray(raw)) return {};
+      var out = {};
+      CASES.forEach(function(c){
+        var entry = raw[c.id];
+        if(!entry || typeof entry !== "object" || Array.isArray(entry)) return;
+        var clean = {};
+        Object.keys(entry).forEach(function(k){
+          if(typeof entry[k] === "string") clean[k] = entry[k];
+        });
+        if(Object.keys(clean).length) out[c.id] = clean;
+      });
+      return out;
+    }catch(e){ return {}; }
+  }
+  // Read-merge-write, scoped to the single case that changed: merging the whole
+  // in-memory draftCache over disk (or skipping the disk re-read entirely) can
+  // clobber a concurrent tab's newer write to an unrelated case.
+  function saveDrafts(caseId, fields){
+    try{
+      var current = loadDrafts();
+      current[caseId] = fields;
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(current));
+      draftCache = current;
+      return true;
+    }catch(e){ return false; }
+  }
+
+  (function validateCasesData(){
+    var seenIds = Object.create(null), seenNums = Object.create(null), ok = true;
+    var REQUIRED_ANSWER_KEYS = ["severity","pattern","workup","action"];
+    var VALID_CATS_CHECK = ["pattern","danger","chronic"];
+    CASES.forEach(function(c, i){
+      if(seenIds[c.id]) ok = false;
+      seenIds[c.id] = true;
+      if(seenNums[c.num]) ok = false;
+      seenNums[c.num] = true;
+      if(c.num !== i+1) ok = false;
+      if(VALID_CATS_CHECK.indexOf(c.cat) === -1) ok = false;
+      if(!c.labs || !c.labs.length) ok = false;
+      if(!c.answer) { ok = false; }
+      else {
+        REQUIRED_ANSWER_KEYS.forEach(function(k){
+          if(!c.answer[k] || !c.answer[k].length) ok = false;
+        });
+      }
+    });
+    if(!ok && typeof console !== "undefined" && console.warn){
+      console.warn("[aki] CASES data integrity check failed: ids/nums/cat/labs/answer are not all valid.");
+    }
+  })();
+
+  var state = {
+    view:"home",
+    caseId:null,
+    reviewOnly:false,
+    progress: loadProgress()
+  };
+
+  var lastSaveFailed = false;
+  var app = document.getElementById("app");
+
+  function escapeHtml(s){
+    s = (s===null || s===undefined) ? "" : String(s);
+    return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+  }
+
+  var VALID_STATUSES = ["good","partial","poor"];
+  function safeStatus(s){
+    return VALID_STATUSES.indexOf(s) !== -1 ? s : "none";
+  }
+  function statusLabel(s){
+    if(s==="good") return "自力で言えた";
+    if(s==="partial") return "一部抜けた";
+    if(s==="poor") return "ほぼ言えなかった";
+    return "未挑戦";
+  }
+  var VALID_CATS = ["pattern","danger","chronic"];
+  function safeCat(c){ return VALID_CATS.indexOf(c) !== -1 ? c : "pattern"; }
+
+  function caseById(id){
+    for(var i=0;i<CASES.length;i++){ if(CASES[i].id===id) return CASES[i]; }
+    return null;
+  }
+  function completedCount(){
+    var n=0;
+    for(var i=0;i<CASES.length;i++){ if(safeStatus(state.progress[CASES[i].id]) !== "none") n++; }
+    return n;
+  }
+  function masteredCount(){
+    var n=0;
+    for(var i=0;i<CASES.length;i++){ if(state.progress[CASES[i].id]==="good") n++; }
+    return n;
+  }
+  function reviewCases(){
+    return CASES.filter(function(c){
+      var s = state.progress[c.id];
+      return s === "partial" || s === "poor";
+    });
+  }
+
+  function go(view, caseId){
+    state.view = view;
+    state.caseId = caseId || null;
+    render();
+    window.scrollTo(0,0);
+  }
+
+  /* ---------------- RENDER: HOME ---------------- */
+  function renderHome(){
+    var done = completedCount();
+    var mastered = masteredCount();
+    var total = CASES.length;
+    var pct = Math.round(mastered/total*100);
+    var rev = reviewCases();
+
+    var circumference = 2*Math.PI*24;
+    var offset = circumference * (1 - pct/100);
+
+    var subLine;
+    if(done < total){
+      subLine = (total-done)+"症例が未挑戦";
+    } else if(rev.length){
+      subLine = "復習対象が "+rev.length+" 症例あります";
+    } else {
+      subLine = "全症例クリアです";
+    }
+
+    var html = "";
+    html += '<div class="hero">';
+    html += '  <div class="eyebrow">AKI 初動トレーニング</div>';
+    html += '  <h1>急性腎障害(AKI)<br>トレーニング</h1>';
+    html += '  <p>研修医が出会う急性腎障害6症例。答えを見る前に、自分の言葉で4つの問いに答えてみましょう。</p>';
+    html += '  <div class="thesis">ゴールは原因を一発で当てることではなく、病型(腎前性/腎性/腎後性)を正しく見極め、見逃してはいけない重症所見と予防可能な原因を取りこぼさないことです。</div>';
+    html += '</div>';
+
+    html += '<div class="progress-card">';
+    html += '  <div class="progress-ring"><svg width="56" height="56"><circle cx="28" cy="28" r="24" stroke="var(--surface-2)" stroke-width="5" fill="none"/><circle cx="28" cy="28" r="24" stroke="var(--primary)" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="'+circumference+'" stroke-dashoffset="'+offset+'"/></svg><div class="pct">'+pct+'%</div></div>';
+    html += '  <div class="progress-text"><div class="num">'+mastered+' / '+total+' 症例 自力で言えた</div><div class="sub">'+subLine+'</div></div>';
+    if(rev.length){
+      html += '  <button class="review-pill-btn" data-action="toggle-review">復習</button>';
+    }
+    html += '</div>';
+
+    html += '<button class="summary-cta" data-action="goto-approach"><span><span class="t">AKIの初動まとめ</span><span class="s">重症度評価→病型分類→原因鑑別→初期対応</span></span><span class="arrow">›</span></button>';
+
+    if(state.reviewOnly){
+      html += '<div class="section-head"><span class="dot" style="background:var(--warn)"></span><h2>復習対象の症例</h2><span class="count">'+rev.length+'件</span></div>';
+      if(rev.length===0){
+        html += '<div class="empty-review">復習対象の症例はありません。<br>「一覧」から症例を確認できます。</div>';
+      } else {
+        html += '<div class="case-grid">'+rev.map(caseCardHtml).join("")+'</div>';
+      }
+    } else {
+      ["pattern","danger","chronic"].forEach(function(cat){
+        var list = CASES.filter(function(c){ return c.cat===cat; });
+        html += '<div class="section-head '+cat+'"><span class="dot"></span><h2>'+CAT_LABEL[cat]+'</h2><span class="count">'+list.length+'症例</span></div>';
+        html += '<div class="case-grid">'+list.map(caseCardHtml).join("")+'</div>';
+      });
+    }
+
+    return html;
+  }
+
+  function caseCardHtml(c){
+    var status = safeStatus(state.progress[c.id]);
+    var cat = safeCat(c.cat);
+    var numStr = (c.num<10?"0":"")+c.num;
+    return '<button class="case-card" data-action="open-case" data-id="'+c.id+'">'+
+      '<span class="ion-badge '+cat+'">'+CAT_BADGE[cat]+'</span>'+
+      '<span class="case-body"><span class="hint">'+numStr+'　'+c.hint+'</span></span>'+
+      '<span class="status-chip '+status+'">'+statusLabel(status)+'</span>'+
+    '</button>';
+  }
+
+  /* ---------------- RENDER: CASE ---------------- */
+  var revealCache = {};
+  var draftCache = loadDrafts();
+  var pendingStatus = {};
+
+  function labChipHtml(l){
+    var abn = (l.abn==="high"||l.abn==="low") ? l.abn : "normal";
+    var symbol = abn==="high" ? "▲" : (abn==="low" ? "▼" : "");
+    return '<span class="lab-chip '+abn+'"><span class="k">'+escapeHtml(l.k)+'</span><span class="v mono">'+(symbol?symbol+" ":"")+escapeHtml(l.v)+'</span>'+(l.u?'<span class="u">'+escapeHtml(l.u)+'</span>':'')+'</span>';
+  }
+
+  function renderCase(c){
+    var cat = safeCat(c.cat);
+    var html = "";
+    html += '<div class="case-hero"><div class="tag '+cat+'">症例 '+(c.num<10?"0":"")+c.num+'・'+c.tag+'</div><h1>'+c.hint+'</h1></div>';
+    html += '<div class="vignette">'+c.vignette;
+    html += '<div class="lab-strip">'+c.labs.map(labChipHtml).join("")+'</div>';
+    if(c.finding){ html += '<div class="finding-line"><b>所見　</b>'+escapeHtml(c.finding)+'</div>'; }
+    html += '</div>';
+
+    var revealed = !!revealCache[c.id];
+    var drafts = draftCache[c.id] || {};
+
+    html += '<div class="selfcheck-card" id="prompts">';
+    getPrompts(c).forEach(function(p){
+      var fieldId = "sc-"+c.id+"-"+p.key;
+      html += '<div class="sc-row">';
+      html += '<label for="'+fieldId+'"><span class="n">'+p.num+'</span>'+p.label+'</label>';
+      html += '<textarea id="'+fieldId+'" data-field="'+p.key+'" placeholder="'+escapeHtml(p.ph)+'">'+ (drafts[p.key] ? escapeHtml(drafts[p.key]) : "") +'</textarea>';
+      html += '</div>';
+    });
+    html += '</div>';
+    html += '<div class="save-warning" id="draftSaveWarning" hidden>⚠ この端末に下書きを保存できませんでした。プライベートブラウズ中か、ストレージが無効になっている可能性があります。この画面を離れると記述内容が失われます。</div>';
+
+    if(!revealed){
+      html += '<button class="reveal-btn" data-action="reveal">模範解答を見る</button>';
+    } else {
+      html += renderAnswer(c);
+    }
+
+    return html;
+  }
+
+  function renderAnswer(c){
+    var catLabel = CAT_LABEL[safeCat(c.cat)];
+    var html = '<div class="answer-wrap">';
+    html += '<div class="diagnosis-reveal"><div class="dr-eyebrow">病態</div><div class="dr-title">'+c.title+'</div><div class="dr-sub">'+catLabel+'</div></div>';
+
+    html += '<div class="pitfall-block"><div class="pf-label"><span class="pf-mark">!</span>ありがちな誤対応</div><p>'+c.pitfall+'</p></div>';
+
+    html += '<div class="divider"><div class="line"></div><span>模範解答</span><div class="line"></div></div>';
+
+    html += '<div class="answer-report">';
+    getPrompts(c).forEach(function(p){
+      html += answerRowHtml(p.key, p.label, c.answer[p.key]);
+    });
+    html += '</div>';
+
+    html += renderRx(c);
+    html += renderPearl(c);
+    html += renderRefs(c);
+
+    html += '</div>';
+
+    html += '<div class="assess-block">';
+    html += '<div class="q">自分の答えと照らし合わせて、自己評価しましょう</div>';
+    var curRaw = pendingStatus[c.id] || state.progress[c.id] || "";
+    var cur = VALID_STATUSES.indexOf(curRaw) !== -1 ? curRaw : "";
+    html += '<div class="assess-row">';
+    html += assessBtn("good","自力で言えた", cur);
+    html += assessBtn("partial","一部抜けた", cur);
+    html += assessBtn("poor","ほぼ言えなかった", cur);
+    html += '</div>';
+    if(cur && lastSaveFailed){
+      html += '<div class="save-warning">⚠ この端末には保存できませんでした。プライベートブラウズ中か、ストレージが無効になっている可能性があります。この記録はこの画面を離れると失われます。</div>';
+    }
+    html += '</div>';
+
+    if(cur){
+      html += '<div class="after-assess">';
+      html += '<button class="nav-btn primary" data-action="next-case">次の症例へ</button>';
+      html += '<button class="nav-btn ghost" data-action="goto-home">一覧に戻る</button>';
+      html += '</div>';
+    }
+
+    return html;
+  }
+
+  function answerRowHtml(key, label, items){
+    return '<div class="ar-row"><h3><span class="ico '+key+'">'+ICO[key]+'</span>'+label+'</h3>'+
+      '<ul>'+items.map(function(t){return '<li>'+t+'</li>';}).join("")+'</ul></div>';
+  }
+
+  function renderRx(c){
+    if(!c.rx || !c.rx.length) return "";
+    var items = c.rx.map(function(t){ return '<li>'+t+'</li>'; }).join("");
+    return '<div class="rx-block"><div class="rx-label"><span class="rx-mark">℞</span>具体的な治療例</div>'+
+      '<p class="rx-caveat">年齢・腎機能・体液量・体重により個別調整が必要な目安です。実際の投与量・タイミングは必ず添付文書・自施設のプロトコル・指導医に確認してください。</p>'+
+      '<ul>'+items+'</ul></div>';
+  }
+
+  function renderPearl(c){
+    if(!c.pearl || !c.pearl.length) return "";
+    var items = c.pearl.map(function(t){ return '<li>'+t+'</li>'; }).join("");
+    return '<div class="pearl-block"><div class="pb-label">まとめ</div><ul>'+items+'</ul></div>';
+  }
+
+  function renderRefs(c){
+    if(!c.refs || !c.refs.length) return "";
+    var items = c.refs.map(refEntryHtml).join("");
+    return '<div class="refs-block"><h4>参考</h4><ol>'+items+'</ol></div>';
+  }
+
+  function refEntryHtml(r){
+    var citationParts = [];
+    if(r.author) citationParts.push(escapeHtml(r.author));
+    if(r.title) citationParts.push(escapeHtml(r.title));
+    var pub = [];
+    if(r.source) pub.push(escapeHtml(r.source));
+    if(r.year) pub.push(escapeHtml(String(r.year)));
+    if(pub.length) citationParts.push(pub.join(" "));
+    var text = citationParts.join("．");
+    var linkHtml = "";
+    if(r.url){
+      linkHtml = '<br><a href="'+escapeHtml(r.url)+'" target="_blank" rel="noopener noreferrer">'+escapeHtml(r.url)+'</a>';
+    }
+    return '<li>'+text+linkHtml+'</li>';
+  }
+
+  function assessBtn(kind, label, cur){
+    return '<button class="assess-btn '+kind+(cur===kind?' active':'')+'" data-action="assess" data-kind="'+kind+'">'+label+'</button>';
+  }
+
+  /* ---------------- RENDER: APPROACH (初動まとめ) ---------------- */
+  function renderApproach(){
+    var html = "";
+    html += '<div class="approach-hero"><div class="eyebrow">AKIの初動まとめ</div><h1>初動を守る2つの武器</h1><p>急性腎障害は原因が非常に多岐にわたり丸暗記では対応しきれない。<mark>①症例によらず必ず自問する4つの問い</mark>と、<mark>②病態を整理する3つの型(病型分類・重症AKI・予防可能なAKI)</mark>、この2つを持っておくと、初めて見る症例でも初動を組み立てられる。</p></div>';
+    html += '<div class="goal-note"><div class="gn-label">⚡ このアプリのゴール</div><div class="gn-body">「診断名を当てる」ことではありません。<mark>病型(腎前性/腎性/腎後性)を正しく見極め、見逃してはいけない重症所見・原因を取りこぼさず、初期対応(体液量是正・薬剤調整・専門医紹介・RRT相談)を間違えない</mark>ことがゴールです。</div></div>';
+
+    html += '<h2 class="axis-section-title">①症例によらず、まず自問する4つ</h2>';
+    html += '<div class="flow">';
+    FLOW.forEach(function(f,i){
+      html += '<div class="flow-step">';
+      html += '<div class="rail"><div class="node">'+(i+1)+'</div>'+(i<FLOW.length-1?'<div class="stem"></div>':'')+'</div>';
+      html += '<div class="content"><h3>'+f.t+'</h3><p>'+f.d+'</p></div>';
+      html += '</div>';
+    });
+    html += '</div>';
+
+    html += '<h2 class="axis-section-title">②AKIを整理する3つの型</h2>';
+    html += '<p class="axis-section-note">個別症例で学んだ知識を、初めて見る症例にも応用できる「型」に変換しておく。</p>';
+    html += AXES.map(renderAxisCard).join('');
+
+    html += '<div class="global-note"><div class="gl-label">国内外のガイドラインとの違いに少しだけ触れると</div><p>AKIの定義・重症度分類(KDIGO基準)は、日本腎臓学会のAKI診療ガイドライン2016もKDIGO診断基準の使用を推奨しており、国内外で基本的に共通の枠組みが使われている。一方、造影剤腎症の予防輸液プロトコルは、日本腎臓学会・日本医学放射線学会・日本循環器学会の合同ガイドライン(2018)が<mark>生理食塩液の投与時間・速度(前6時間・後6〜12時間、緊急時は重曹液の短時間法)</mark>を具体的に示すなど、国内の実務に即した数値が定められている点は押さえておきたい。</p></div>';
+
+    html += '<div class="approach-foot">迷ったら、重症度(KDIGO)・病型(腎前性/腎性/腎後性)・原因(頻度の高いもの/見逃せないもの)・RRT適応(AEIOU)の4つに立ち返る。</div>';
+    return html;
+  }
+
+  function renderAxisCard(ax){
+    var html = '<div class="axis-card '+ax.cat+'">';
+    html += '<div class="axis-head"><span class="axis-dot"></span><h3>'+ax.label+'</h3></div>';
+    html += '<p class="axis-intro">'+ax.intro+'</p>';
+    html += '<ol class="axis-steps">';
+    ax.steps.forEach(function(s){
+      html += '<li><b>'+s.t+'</b><span>'+s.d+'</span></li>';
+    });
+    html += '</ol>';
+    html += '<div class="axis-note">'+ax.note+'</div>';
+    html += '<div class="axis-refs">'+ax.refs.map(escapeHtml).join(' / ')+'</div>';
+    html += '</div>';
+    return html;
+  }
+
+  /* ---------------- MASTER RENDER ---------------- */
+  function render(){
+    var topbarHtml, mainHtml;
+
+    if(state.view==="home"){
+      topbarHtml = state.reviewOnly
+        ? '<button class="back" data-action="goto-home-full">‹ 一覧</button><div class="title">復習リスト</div>'
+        : '<div class="title">急性腎障害(AKI)トレーニング</div>';
+      mainHtml = renderHome();
+      if(!state.reviewOnly){
+        mainHtml += '<div class="disclaimer">内容は教育目的の一般的な整理です。実際の治療方針は必ず各施設のプロトコルや指導医の判断、日本腎臓学会などの最新ガイドラインに従ってください。</div>';
+      }
+    } else if(state.view==="case"){
+      var c = caseById(state.caseId);
+      if(!c){
+        state.view = "home";
+        state.caseId = null;
+        return render();
+      }
+      var numStr = (c.num<10?"0":"")+c.num;
+      topbarHtml = '<button class="back" data-action="goto-home">‹ 一覧</button><div class="title">症例 '+numStr+'</div>';
+      mainHtml = renderCase(c);
+    } else if(state.view==="approach"){
+      topbarHtml = '<button class="back" data-action="goto-home">‹ 一覧</button><div class="title">初動まとめ</div>';
+      mainHtml = renderApproach();
+    }
+
+    app.innerHTML = '<div class="topbar">'+topbarHtml+'</div><main>'+mainHtml+'</main>';
+    bindEvents();
+  }
+
+  /* ---------------- EVENTS ---------------- */
+  function nextInPool(pool, current){
+    var idx = -1;
+    for(var i=0;i<pool.length;i++){ if(pool[i].id===current.id){ idx = i; break; } }
+    return idx === -1 ? pool[0] : pool[(idx+1) % pool.length];
+  }
+
+  function bindEvents(){
+    app.querySelectorAll("[data-action]").forEach(function(el){
+      el.addEventListener("click", function(){
+        var action = el.getAttribute("data-action");
+        if(action==="open-case"){
+          revealCache[el.getAttribute("data-id")] = false;
+          delete pendingStatus[el.getAttribute("data-id")];
+          lastSaveFailed = false;
+          go("case", el.getAttribute("data-id"));
+        } else if(action==="goto-home"){
+          go("home");
+        } else if(action==="goto-home-full"){
+          state.reviewOnly = false;
+          render();
+        } else if(action==="toggle-review"){
+          state.reviewOnly = true;
+          render();
+        } else if(action==="goto-approach"){
+          go("approach");
+        } else if(action==="reveal"){
+          lastSaveFailed = false;
+          collectDraft(state.caseId, true);
+          revealCache[state.caseId] = true;
+          render();
+          var wrap = app.querySelector(".answer-wrap");
+          if(wrap) wrap.scrollIntoView({behavior:"smooth", block:"start"});
+        } else if(action==="assess"){
+          var kind = el.getAttribute("data-kind");
+          var c0 = caseById(state.caseId);
+          if(!c0) return;
+          pendingStatus[state.caseId] = kind;
+          var onDiskProgress = loadProgress();
+          onDiskProgress[state.caseId] = kind;
+          state.progress = onDiskProgress;
+          lastSaveFailed = !saveProgress(state.progress);
+          render();
+        } else if(action==="next-case"){
+          var c = caseById(state.caseId);
+          if(!c) return;
+          var pool = state.reviewOnly ? reviewCases() : CASES;
+          if(state.reviewOnly && pool.length === 0){
+            state.reviewOnly = false;
+            pool = CASES;
+          }
+          var next = nextInPool(pool, c);
+          revealCache[next.id] = false;
+          delete pendingStatus[next.id];
+          lastSaveFailed = false;
+          go("case", next.id);
+        }
+      });
+    });
+
+    app.querySelectorAll("textarea[data-field]").forEach(function(ta){
+      ta.addEventListener("input", function(){
+        collectDraft(state.caseId, false);
+      });
+    });
+  }
+
+  var draftSaveTimer = null;
+  function collectDraft(caseId, flushNow){
+    var d = {};
+    app.querySelectorAll("textarea[data-field]").forEach(function(ta){
+      d[ta.getAttribute("data-field")] = ta.value;
+    });
+    draftCache[caseId] = d;
+    if(draftSaveTimer){ clearTimeout(draftSaveTimer); draftSaveTimer = null; }
+    function flush(){
+      var ok = saveDrafts(caseId, d);
+      var warnEl = document.getElementById("draftSaveWarning");
+      if(warnEl){ warnEl.hidden = ok; }
+    }
+    if(flushNow){
+      flush();
+    } else {
+      draftSaveTimer = setTimeout(flush, 400);
+    }
+  }
+  function flushCurrentDraft(){
+    if(state.view === "case" && state.caseId && draftCache[state.caseId]){
+      saveDrafts(state.caseId, draftCache[state.caseId]);
+    }
+  }
+  window.addEventListener("pagehide", flushCurrentDraft);
+  document.addEventListener("visibilitychange", function(){
+    if(document.visibilityState === "hidden") flushCurrentDraft();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
