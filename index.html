@@ -520,27 +520,27 @@
       refs:[ {author:"Kidney Disease: Improving Global Outcomes (KDIGO) Acute Kidney Injury Work Group.", title:"KDIGO Clinical Practice Guideline for Acute Kidney Injury", source:"Kidney Int Suppl 2(1):1-138", year:"2012", url:"https://kdigo.org/wp-content/uploads/2016/10/KDIGO-2012-AKI-Guideline-English.pdf"}, {author:"AKI（急性腎障害）診療ガイドライン作成委員会.", title:"AKI（急性腎障害）診療ガイドライン2016", source:"日本腎臓学会・日本集中治療医学会・日本透析医学会・日本急性血液浄化学会・日本小児腎臓病学会", year:"2016", url:"https://cdn.jsn.or.jp/guideline/pdf/419-533.pdf"}, {author:"Carvounis CP, Nisar S, Guro-Razuman S.", title:"Significance of the fractional excretion of urea in the differential diagnosis of acute renal failure", source:"Kidney Int 62:2223-2229", year:"2002", url:"https://pubmed.ncbi.nlm.nih.gov/12427149/"} ]
     },
     {
-      id:"triple_whammy", num:2, cat:"chronic", tag:"整形外科受診後・倦怠感",
-      title:"3剤併用(トリプルワミー)による薬剤性AKI", hint:"82歳女性・2週間前に鎮痛薬が追加された・倦怠感と食欲低下",
-      vignette:"82歳女性。高血圧に対しカンデサルタン(ARB)とフロセミド20mg/日を内服中。2週間前、変形性膝関節症の痛みに対し整形外科でロキソプロフェン(NSAID)を1日3回内服するよう処方された。ここ数日の倦怠感と食欲低下を主訴に受診した。血圧132/78mmHg、脈拍76/分。水分摂取は普段通りできており、明らかな脱水所見や浮腫は目立たない。",
-      labs:[ {k:"Cr(今回)",v:"2.4",u:"mg/dL",abn:"high"}, {k:"Cr(2週間前)",v:"1.0",u:"mg/dL",abn:"normal"}, {k:"K",v:"5.6",u:"mEq/L",abn:"high"}, {k:"Na",v:"138",u:"mEq/L",abn:"normal"} ],
-      finding:"身体所見:皮膚ツルゴール・粘膜湿潤は保たれ、明らかな脱水所見はない。下腿浮腫なし。",
+      id:"postrenal_bph", num:2, cat:"pattern", tag:"下腹部痛・排尿なし",
+      title:"尿閉による腎後性AKI ― 見逃せば重症化、対応すれば可逆的", hint:"81歳男性・前立腺肥大の既往・下腹部痛と丸1日尿が出ない",
+      vignette:"81歳男性。数年前から前立腺肥大症を指摘され経過観察中。市販の総合感冒薬(抗コリン作用のある成分を含む)を3日前から内服していた。本日、下腹部痛と丸1日排尿がないことに気づき受診した。血圧148/86mmHg、脈拍88/分。下腹部は膨隆し、恥骨上に圧痛を伴う腫瘤様の膨隆を触知する。",
+      labs:[ {k:"Cr(今回)",v:"3.8",u:"mg/dL",abn:"high"}, {k:"Cr(半年前)",v:"1.1",u:"mg/dL",abn:"normal"}, {k:"K",v:"5.2",u:"mEq/L",abn:"high"} ],
+      finding:"身体所見:恥骨上に球状の膨隆と圧痛を触知する。直近24時間の排尿はほぼなし。下腿浮腫なし。",
       prompts:{
-        severity:{ label:"検査値から、この患者のAKIの重症度と緊急性をどう評価するか", ph:"KDIGO病期、高K血症の心電図評価など…" },
-        pattern:{ label:"内服薬の変化と時系列から、原因としてどの機序を考えるか", ph:"新しく始まった薬ともともと飲んでいた薬の組み合わせなど…" },
-        workup:{ label:"他の原因を除外し、原因薬剤を特定するために何を確認するか", ph:"内服薬歴の詳細な聴取、体液量評価、腎エコーなど…" },
-        action:{ label:"原因薬剤への対応と、今後の再発予防をどう組み立てるか", ph:"どの薬を中止するか、再開の可否、患者教育など…" }
+        severity:{ label:"検査値と身体所見から、この患者の重症度をどう評価するか", ph:"KDIGO病期、高K血症・無尿の緊急性など…" },
+        pattern:{ label:"身体所見と経過から、AKIの病型をどう考えるか", ph:"腎後性を示唆する所見、前立腺肥大・薬剤の関与など…" },
+        workup:{ label:"腎後性AKIであることを確定するために、何を確認・実施するか", ph:"身体診察の次に何をすべきか…" },
+        action:{ label:"閉塞解除後に注意すべき合併症と、今後の対応をどう組み立てるか", ph:"導尿後の尿量モニタリング、電解質補正、専門科紹介など…" }
       },
       answer:{
-        severity:["<mark>ベースラインCr 1.0mg/dLに対し今回2.4mg/dLで2.4倍に上昇しておりKDIGOステージ2</mark>に該当する。<mark>K 5.6mEq/Lの高カリウム血症も伴い</mark>、心電図でテント状T波などの変化がないか確認する緊急性がある"],
-        pattern:["<mark>NSAIDは腎血流を保つプロスタグランジン産生を阻害して輸入細動脈を収縮させ、ARBは輸出細動脈を拡張させる</mark>。利尿薬による体液量減少が加わると、この3剤が糸球体濾過圧を保つ代償機構を同時に阻害し、<mark>明らかな脱水がなくても血行動態性(腎前性)のAKIを起こしうる</mark>(いわゆる「トリプルワミー」)","<mark>NSAID開始から2週間というタイミング</mark>が薬剤性を強く示唆し、他の新規薬剤や飲水量の変化がないかも確認する"],
-        workup:["<mark>内服薬歴を日付とともに詳細に聴取</mark>し、NSAID(市販薬・湿布も含む)の使用、ARB/利尿薬の用量変更がないかを確認する","体液量評価(起立性低血圧の有無、皮膚所見)を行い、<mark>明らかな脱水所見に乏しいことがトリプルワミーを積極的に疑う根拠</mark>となる","腎エコーで水腎症がないか確認し腎後性を除外する。尿検査で尿細管障害を示す所見(顆粒円柱など)がないかも確認する"],
-        action:["<mark>NSAIDを直ちに中止</mark>する。高カリウム血症を伴う場合は<mark>ARBも一時休薬</mark>し、利尿薬は体液量評価のうえ継続可否を判断する","<mark>K 5.6mEq/Lで心電図変化があれば、グルコン酸カルシウム(カルチコール8.5%)10〜20mLを5〜10分かけて緩徐静注(心筋保護)し、GI療法(50%ブドウ糖液20mLを2〜3回、うち1回にインスリン10単位を混注)で細胞内シフトを図る</mark>。<mark>高齢で腎機能が低下している本例では遅発性低血糖のリスクが高く、インスリン5単位への減量や10%ブドウ糖持続点滴の併用(→症例6で詳述)も選択肢</mark>。心電図変化がなくても頻回のモニタリングを行う","<mark>腎機能・K値の改善を数日で再評価</mark>し、改善すればARB・利尿薬の再開時期を慎重に判断する。今後は変形性膝関節症の鎮痛にNSAID以外の選択肢(アセトアミノフェンなど)を優先し、<mark>NSAIDを新規処方する際は腎機能とARB/利尿薬併用の有無を必ず確認する</mark>体制を作る"]
+        severity:["<mark>ベースラインCr 1.1mg/dLに対し今回3.8mg/dLと3倍を超えて上昇しておりKDIGOステージ3</mark>に該当し、<mark>K 5.2mEq/Lの高カリウム血症も伴う</mark>ため緊急対応を要する","無尿と恥骨上の膨隆という<mark>典型的な急性尿閉の身体所見</mark>があり、身体診察だけで腎後性を強く疑える状態"],
+        pattern:["<mark>前立腺肥大症の既往に、抗コリン作用のある感冒薬内服が加わり急性尿閉を誘発</mark>したと考えられる","<mark>抗コリン作用が強く尿閉の誘因になりやすい代表的な薬剤には、総合感冒薬・抗アレルギー薬に含まれる第一世代抗ヒスタミン薬(クロルフェニラミン、ジフェンヒドラミンなど)、三環系抗うつ薬(アミトリプチリンなど)、一部の抗精神病薬(クロルプロマジン、オランザピンなど)、過活動膀胱治療薬(オキシブチニン、ソリフェナシンなど)、鎮痙薬(ブチルスコポラミンなど)がある</mark>。前立腺肥大症の患者にこれらが新規開始・増量されると尿閉を誘発しうる","腎後性AKIは<mark>両側の尿路(または機能的単腎)が閉塞して初めて腎機能に影響する</mark>ため、片側性の閉塞(片側尿管結石など、対側腎が機能している場合)では通常AKIは起こらないことも覚えておく"],
+        workup:["<mark>まず導尿(または膀胱スキャンで残尿量を確認後に導尿)を行う。尿閉の解除自体が診断的処置にもなる</mark>","腎エコーで<mark>両側の水腎症の有無を確認</mark>し、閉塞部位(前立腺・尿管・後腹膜腫瘍など)の評価につなげる","高カリウム血症について心電図を確認する"],
+        action:["<mark>導尿によりまず尿閉を解除し、高カリウム血症に心電図変化があれば同時にグルコン酸カルシウム・インスリン+ブドウ糖などの緊急処置を行う</mark>","<mark>閉塞解除後は数時間〜数日間、post-obstructive diuresis(尿量200mL/時が2時間以上持続、または24時間で3L以上の多尿)が起こりうる</mark>ため、尿量・電解質(特にNa、K)・体液量を頻回にモニタリングし、必要に応じて輸液で補う","<mark>原因となった抗コリン作用のある薬剤は中止</mark>し、同様の抗コリン作用を持つ他の薬剤(第一世代抗ヒスタミン薬、三環系抗うつ薬、過活動膀胱治療薬など)の併用がないかも確認する。前立腺肥大症については泌尿器科へ紹介してα1遮断薬や手術適応を検討する"]
       },
-      rx:["NSAID(ロキソプロフェンなど)を中止し、鎮痛にはアセトアミノフェンなど腎への影響が少ない薬剤への変更を検討する","高カリウム血症に心電図変化を伴う場合はグルコン酸カルシウム(カルチコール8.5%)10〜20mLを5〜10分かけて緩徐静注し、GI療法(50%ブドウ糖液20mLを2〜3回、うち1回にレギュラーインスリン10単位を混注)で細胞内シフトを図る。高齢・腎機能低下例では遅発性低血糖に注意し、インスリン5単位への減量やブドウ糖持続点滴の併用を検討する(詳細は症例6を参照)","ARB・利尿薬は腎機能・K値・体液量を見ながら数日以内に再開可否を判断し、自己判断での長期中断は避ける"],
-      pitfall:"<mark>市販の湿布薬や他科で処方されたNSAIDを「飲み薬ではない」として申告し忘れる患者は多く、お薬手帳の内服薬だけを確認して外用薬・市販薬を聞き逃す</mark>のはよくある見落とし。また<mark>腎機能改善後にARB・利尿薬を再開しないまま漫然と休薬を続け、本来の降圧・心不全管理が疎かになる</mark>のも根本原因への対応を誤解した誤り。",
-      pearl:["<mark>利尿薬+ACE阻害薬/ARBの2剤併用にNSAIDを追加すると、2剤併用のみの場合と比べてAKIリスクが約3割(開始1か月以内はさらに)上昇する</mark>とされ、高齢者や新規NSAID開始時は特に注意する","<mark>明らかな脱水がなくても、この3剤の組み合わせだけで血行動態性AKIが起こりうる</mark>ことを知っておく","新規NSAID処方時は<mark>腎機能とARB/ACE阻害薬・利尿薬の併用歴を必ず確認</mark>し、可能なら他の鎮痛薬を優先する","体調不良時にACE阻害薬/ARB・利尿薬・NSAIDsを一時休薬する<mark>「シックデイルール」</mark>の患者教育もあわせて行う"],
-      refs:[ {author:"Lapi F, Azoulay L, Yin H, et al.", title:"Concurrent use of diuretics, angiotensin converting enzyme inhibitors, and angiotensin receptor blockers with non-steroidal anti-inflammatory drugs and risk of acute kidney injury: nested case-control study", source:"BMJ 346:e8525", year:"2013", url:"https://www.bmj.com/content/346/bmj.e8525"}, {title:"Acute Kidney Injury secondary to a combination of renin-angiotensin system inhibitors, diuretics and NSAIDS: \"The Triple Whammy\"", source:"Nefrología", year:"2015", url:"https://www.sciencedirect.com/science/article/pii/S2013251415000139"}, {title:"Avoiding the \"triple whammy\" in primary care: ACE inhibitor/ARB + diuretic + NSAID", source:"Best Practice Advocacy Centre New Zealand (bpacnz)", year:"2018", url:"https://bpac.org.nz/2018/docs/triple-whammy.pdf"} ]
+      rx:["導尿カテーテルを留置し尿閉を解除する。強い抵抗がある場合は無理をせず泌尿器科に相談する","閉塞解除後は尿量が200mL/時を2時間以上、または24時間で3L以上持続する場合はpost-obstructive diuresisとして電解質を含む輸液で補正し、頻回に尿量・電解質をモニタリングする","抗コリン薬など尿閉の誘因となった薬剤は中止し、前立腺肥大症に対しα1遮断薬の開始や泌尿器科紹介を検討する"],
+      pitfall:"<mark>「高齢男性のCr上昇=腎前性か腎性だろう」と決めつけ、身体診察(膀胱の触診)や導尿を後回しにする</mark>のは典型的な誤り。腎後性AKIは対応すれば速やかに改善しうる可逆性の高い病型であり、見逃すと不可逆的な腎障害に進行しうる。逆に<mark>閉塞解除後のpost-obstructive diuresisを見落とし、多尿による脱水・電解質異常を放置する</mark>のも危険。",
+      pearl:["<mark>腎後性AKIを疑ったら、まず身体診察(膀胱の触診・叩打痛)と導尿・膀胱スキャンで評価</mark>する。腎エコーでの水腎症確認も重要だが、導尿自体が診断的かつ治療的処置になる","<mark>両側性(または機能的単腎の)閉塞で初めてAKIが起こる</mark>ことを理解しておく","<mark>閉塞解除後のpost-obstructive diuresis(200mL/時×2時間以上、または24時間で3L以上)</mark>を見越して尿量・電解質を頻回にモニタリングする","抗コリン作用の強い薬剤(<mark>第一世代抗ヒスタミン薬、三環系抗うつ薬、一部の抗精神病薬、過活動膀胱治療薬、鎮痙薬など</mark>)は市販薬・処方薬いずれも<mark>前立腺肥大症患者の急性尿閉の誘因</mark>になりうる"],
+      refs:[ {author:"Singh A, Dass B, Ejaz A, Bali A.", title:"Post-obstructive Diuresis: A Cautionary Tale", source:"Cureus 11(6):e4906", year:"2019", url:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6948098/"}, {author:"Kidney Disease: Improving Global Outcomes (KDIGO) Acute Kidney Injury Work Group.", title:"KDIGO Clinical Practice Guideline for Acute Kidney Injury", source:"Kidney Int Suppl 2(1):1-138", year:"2012", url:"https://kdigo.org/wp-content/uploads/2016/10/KDIGO-2012-AKI-Guideline-English.pdf"}, {author:"AKI（急性腎障害）診療ガイドライン作成委員会.", title:"AKI（急性腎障害）診療ガイドライン2016", source:"日本腎臓学会・日本集中治療医学会・日本透析医学会・日本急性血液浄化学会・日本小児腎臓病学会", year:"2016", url:"https://cdn.jsn.or.jp/guideline/pdf/419-533.pdf"} ]
     },
     {
       id:"septic_aki", num:3, cat:"danger", tag:"重症・敗血症関連",
@@ -566,53 +566,7 @@
       refs:[ {author:"Kidney Disease: Improving Global Outcomes (KDIGO) Acute Kidney Injury Work Group.", title:"KDIGO Clinical Practice Guideline for Acute Kidney Injury", source:"Kidney Int Suppl 2(1):1-138", year:"2012", url:"https://kdigo.org/wp-content/uploads/2016/10/KDIGO-2012-AKI-Guideline-English.pdf"}, {author:"Navalkele B, Pogue JM, Karino S, et al.", title:"Risk of acute kidney injury in patients on concomitant vancomycin and piperacillin-tazobactam compared to those on vancomycin and cefepime", source:"Clin Infect Dis 64(2):116-123", year:"2017", url:"https://pubmed.ncbi.nlm.nih.gov/27986669/"}, {title:"Sepsis-associated acute kidney injury—treatment standard", source:"Nephrol Dial Transplant 39(1):26-35", year:"2024", url:"https://academic.oup.com/ndt/article/39/1/26/7218568"} ]
     },
     {
-      id:"postrenal_bph", num:4, cat:"pattern", tag:"下腹部痛・排尿なし",
-      title:"尿閉による腎後性AKI ― 見逃せば重症化、対応すれば可逆的", hint:"81歳男性・前立腺肥大の既往・下腹部痛と丸1日尿が出ない",
-      vignette:"81歳男性。数年前から前立腺肥大症を指摘され経過観察中。市販の総合感冒薬(抗コリン作用のある成分を含む)を3日前から内服していた。本日、下腹部痛と丸1日排尿がないことに気づき受診した。血圧148/86mmHg、脈拍88/分。下腹部は膨隆し、恥骨上に圧痛を伴う腫瘤様の膨隆を触知する。",
-      labs:[ {k:"Cr(今回)",v:"3.8",u:"mg/dL",abn:"high"}, {k:"Cr(半年前)",v:"1.1",u:"mg/dL",abn:"normal"}, {k:"K",v:"5.2",u:"mEq/L",abn:"high"} ],
-      finding:"身体所見:恥骨上に球状の膨隆と圧痛を触知する。直近24時間の排尿はほぼなし。下腿浮腫なし。",
-      prompts:{
-        severity:{ label:"検査値と身体所見から、この患者の重症度をどう評価するか", ph:"KDIGO病期、高K血症・無尿の緊急性など…" },
-        pattern:{ label:"身体所見と経過から、AKIの病型をどう考えるか", ph:"腎後性を示唆する所見、前立腺肥大・薬剤の関与など…" },
-        workup:{ label:"腎後性AKIであることを確定するために、何を確認・実施するか", ph:"身体診察の次に何をすべきか…" },
-        action:{ label:"閉塞解除後に注意すべき合併症と、今後の対応をどう組み立てるか", ph:"導尿後の尿量モニタリング、電解質補正、専門科紹介など…" }
-      },
-      answer:{
-        severity:["<mark>ベースラインCr 1.1mg/dLに対し今回3.8mg/dLと3倍を超えて上昇しておりKDIGOステージ3</mark>に該当し、<mark>K 5.2mEq/Lの高カリウム血症も伴う</mark>ため緊急対応を要する","無尿と恥骨上の膨隆という<mark>典型的な急性尿閉の身体所見</mark>があり、身体診察だけで腎後性を強く疑える状態"],
-        pattern:["<mark>前立腺肥大症の既往に、抗コリン作用のある感冒薬内服が加わり急性尿閉を誘発</mark>したと考えられる","<mark>抗コリン作用が強く尿閉の誘因になりやすい代表的な薬剤には、総合感冒薬・抗アレルギー薬に含まれる第一世代抗ヒスタミン薬(クロルフェニラミン、ジフェンヒドラミンなど)、三環系抗うつ薬(アミトリプチリンなど)、一部の抗精神病薬(クロルプロマジン、オランザピンなど)、過活動膀胱治療薬(オキシブチニン、ソリフェナシンなど)、鎮痙薬(ブチルスコポラミンなど)がある</mark>。前立腺肥大症の患者にこれらが新規開始・増量されると尿閉を誘発しうる","腎後性AKIは<mark>両側の尿路(または機能的単腎)が閉塞して初めて腎機能に影響する</mark>ため、片側性の閉塞(片側尿管結石など、対側腎が機能している場合)では通常AKIは起こらないことも覚えておく"],
-        workup:["<mark>まず導尿(または膀胱スキャンで残尿量を確認後に導尿)を行う。尿閉の解除自体が診断的処置にもなる</mark>","腎エコーで<mark>両側の水腎症の有無を確認</mark>し、閉塞部位(前立腺・尿管・後腹膜腫瘍など)の評価につなげる","高カリウム血症について心電図を確認する"],
-        action:["<mark>導尿によりまず尿閉を解除し、高カリウム血症に心電図変化があれば同時にグルコン酸カルシウム・インスリン+ブドウ糖などの緊急処置を行う</mark>","<mark>閉塞解除後は数時間〜数日間、post-obstructive diuresis(尿量200mL/時が2時間以上持続、または24時間で3L以上の多尿)が起こりうる</mark>ため、尿量・電解質(特にNa、K)・体液量を頻回にモニタリングし、必要に応じて輸液で補う","<mark>原因となった抗コリン作用のある薬剤は中止</mark>し、同様の抗コリン作用を持つ他の薬剤(第一世代抗ヒスタミン薬、三環系抗うつ薬、過活動膀胱治療薬など)の併用がないかも確認する。前立腺肥大症については泌尿器科へ紹介してα1遮断薬や手術適応を検討する"]
-      },
-      rx:["導尿カテーテルを留置し尿閉を解除する。強い抵抗がある場合は無理をせず泌尿器科に相談する","閉塞解除後は尿量が200mL/時を2時間以上、または24時間で3L以上持続する場合はpost-obstructive diuresisとして電解質を含む輸液で補正し、頻回に尿量・電解質をモニタリングする","抗コリン薬など尿閉の誘因となった薬剤は中止し、前立腺肥大症に対しα1遮断薬の開始や泌尿器科紹介を検討する"],
-      pitfall:"<mark>「高齢男性のCr上昇=腎前性か腎性だろう」と決めつけ、身体診察(膀胱の触診)や導尿を後回しにする</mark>のは典型的な誤り。腎後性AKIは対応すれば速やかに改善しうる可逆性の高い病型であり、見逃すと不可逆的な腎障害に進行しうる。逆に<mark>閉塞解除後のpost-obstructive diuresisを見落とし、多尿による脱水・電解質異常を放置する</mark>のも危険。",
-      pearl:["<mark>腎後性AKIを疑ったら、まず身体診察(膀胱の触診・叩打痛)と導尿・膀胱スキャンで評価</mark>する。腎エコーでの水腎症確認も重要だが、導尿自体が診断的かつ治療的処置になる","<mark>両側性(または機能的単腎の)閉塞で初めてAKIが起こる</mark>ことを理解しておく","<mark>閉塞解除後のpost-obstructive diuresis(200mL/時×2時間以上、または24時間で3L以上)</mark>を見越して尿量・電解質を頻回にモニタリングする","抗コリン作用の強い薬剤(<mark>第一世代抗ヒスタミン薬、三環系抗うつ薬、一部の抗精神病薬、過活動膀胱治療薬、鎮痙薬など</mark>)は市販薬・処方薬いずれも<mark>前立腺肥大症患者の急性尿閉の誘因</mark>になりうる"],
-      refs:[ {author:"Singh A, Dass B, Ejaz A, Bali A.", title:"Post-obstructive Diuresis: A Cautionary Tale", source:"Cureus 11(6):e4906", year:"2019", url:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6948098/"}, {author:"Kidney Disease: Improving Global Outcomes (KDIGO) Acute Kidney Injury Work Group.", title:"KDIGO Clinical Practice Guideline for Acute Kidney Injury", source:"Kidney Int Suppl 2(1):1-138", year:"2012", url:"https://kdigo.org/wp-content/uploads/2016/10/KDIGO-2012-AKI-Guideline-English.pdf"}, {author:"AKI（急性腎障害）診療ガイドライン作成委員会.", title:"AKI（急性腎障害）診療ガイドライン2016", source:"日本腎臓学会・日本集中治療医学会・日本透析医学会・日本急性血液浄化学会・日本小児腎臓病学会", year:"2016", url:"https://cdn.jsn.or.jp/guideline/pdf/419-533.pdf"} ]
-    },
-    {
-      id:"contrast_aki", num:5, cat:"chronic", tag:"予防可能・造影剤関連",
-      title:"CKD患者への造影CT ― 造影剤腎症の予防策とリスク評価", hint:"70歳女性・糖尿病性腎症でeGFR32・急性虫垂炎疑いで造影CTを検討",
-      vignette:"70歳女性。2型糖尿病に伴う糖尿病性腎症でCKDステージG3b(直近のeGFR 32mL/min/1.73m²、Cr 1.3mg/dL)の診断で腎臓内科に通院中。右下腹部痛で救急外来を受診し、急性虫垂炎が疑われ、外科からヨード造影剤を用いた腹部造影CTが提案された。バイタルサインは安定しており、緊急性の高いショック状態ではない。メトホルミンを内服中。",
-      labs:[ {k:"Cr",v:"1.3",u:"mg/dL",abn:"high"}, {k:"eGFR",v:"32",u:"mL/min/1.73m²",abn:"low"}, {k:"K",v:"4.4",u:"mEq/L",abn:"normal"} ],
-      finding:"身体所見:右下腹部に限局した圧痛と反跳痛を認めるが、バイタルサインは安定。",
-      prompts:{
-        severity:{ label:"この患者の腎機能から、造影剤腎症(CI-AKI)のリスクをどう評価するか", ph:"eGFR・糖尿病などの危険因子、緊急度とのバランスなど…" },
-        pattern:{ label:"造影剤腎症の定義とリスク因子をどう整理するか", ph:"KDIGO定義、糖尿病・脱水・高浸透圧造影剤などの因子…" },
-        workup:{ label:"造影CTを行う前に確認・準備すべきことは何か", ph:"検査前に見直すべき薬剤や代替手段など…" },
-        action:{ label:"造影を実施する場合、予防策と経過観察をどう組み立てるか", ph:"輸液の種類・タイミング、造影後のフォローなど…" }
-      },
-      answer:{
-        severity:["<mark>eGFR 32mL/min/1.73m²(CKD G3b)に加え糖尿病があり、造影剤腎症(CI-AKI)の代表的な危険因子(腎機能低下・糖尿病)を2つ有する</mark>。ただしバイタルサインは安定しており、<mark>虫垂炎の評価という臨床的必要性とCI-AKIリスクを天秤にかけて判断</mark>する状況"],
-        pattern:["<mark>CI-AKIはKDIGO定義上「造影剤投与後48時間以内にCrが0.3mg/dL以上上昇、または7日以内に1.5倍以上上昇、あるいは尿量低下」を満たす場合</mark>と定義される(日本のガイドラインでは造影剤腎症をCr上昇0.5mg/dL以上または25%以上・72時間以内とする定義も併用される)。<mark>危険因子は腎機能低下、糖尿病、脱水、高齢、短期間の反復投与</mark>などが知られている(高浸透圧造影剤は現在の日本ではほぼ使用されておらず歴史的な危険因子)"],
-        workup:["<mark>造影の必要性を外科と再確認し、単純CTや超音波など造影を要さない代替検査で診断がつかないか検討</mark>する(本例は虫垂炎評価で造影が有用な場面だが、代替可能性は都度確認する)","<mark>メトホルミンは腎機能低下例では造影後48時間の休薬と腎機能確認後の再開が現在の基本方針であり、造影前のルーチンでの休薬は近年の運用では必須とされていない</mark>ことを確認する","脱水があれば是正し、他の腎毒性薬剤(NSAIDsなど)が併用されていないか確認する"],
-        action:["<mark>日本のガイドライン2018(日本腎臓学会・日本医学放射線学会・日本循環器学会)は静脈内投与の造影剤についてeGFR<30で予防策の説明・実施を明確に推奨しており、本例(eGFR32)はその基準をわずかに上回るが、糖尿病を合併し危険因子が複数重なるため同様の予防策を検討するのが妥当</mark>である。<mark>虫垂炎の診断が遅れることの不利益も考慮し、時間的余裕があれば生理食塩液を造影開始6時間前から1mL/kg/時で開始し終了後も1mL/kg/時で6〜12時間継続する標準法を、余裕がなければ重曹液を造影開始1時間前から3mL/kg/時、終了後1mL/kg/時で6時間投与する短時間法を用いる</mark>","心不全の合併がある場合は<mark>輸液量を減量する</mark>など個別に調整する","<mark>近年の運用ではメトホルミンを造影前にルーチンで休薬する必要はないとされる。腎機能低下例では造影後48時間休薬し、腎機能を確認してから再開する</mark>","造影後は<mark>数日以内にCrを再検し、CI-AKIの有無を確認</mark>する"]
-      },
-      rx:["時間的余裕があれば生理食塩水を造影開始6時間前から1mL/kg/時で開始し終了後も1mL/kg/時で6〜12時間投与する標準法を、診断を大きく遅らせられない場合は重曹液3mL/kg/時を1時間前から、終了後1mL/kg/時を6時間投与する短時間法を用いる","心不全の合併がある場合は輸液量を減量するなど個別に調整する","メトホルミンは造影前のルーチンでの休薬は不要だが、腎機能低下例では造影後48時間休薬し腎機能を確認してから再開する","低浸透圧・等浸透圧の造影剤を選択し、可能な限り造影剤使用量を必要最小限にとどめる"],
-      pitfall:"<mark>「腎機能が悪いから造影検査は絶対禁忌」と必要な診断的検査を回避し診断が遅れてしまう</mark>のも、逆に<mark>「輸液さえしておけば造影剤腎症は防げる」と油断して造影後のメトホルミン休薬など他の予防策を怠る</mark>のも誤り。臨床的必要性とリスクを天秤にかけたうえで、予防策を組み合わせて実施する。",
-      pearl:["<mark>CI-AKIの主な危険因子は腎機能低下、糖尿病、脱水、高齢</mark>(高浸透圧造影剤は現在の日本ではほぼ使用されておらず歴史的な危険因子)","<mark>予防の第一選択は輸液(生理食塩水)</mark>であり、日本のガイドライン(静脈内投与ではeGFR<30で予防を明確に推奨)では造影前6時間・後6〜12時間の1mL/kg/時投与、時間的余裕がない場合は重曹液の短時間プロトコルが示されている","<mark>メトホルミンは造影前のルーチン休薬は不要で、腎機能低下例では造影後48時間休薬し腎機能確認後に再開する</mark>","診断上真に造影が必要かを都度再検討し、<mark>代替検査(単純CT・超音波)で目的を達成できないか</mark>を考える"],
-      refs:[ {author:"日本腎臓学会・日本医学放射線学会・日本循環器学会.", title:"腎障害患者におけるヨード造影剤使用に関するガイドライン2018", source:"日本腎臓学会誌 61(7):933-1081", year:"2019", url:"https://cdn.jsn.or.jp/data/guideline-201911.pdf"}, {author:"Kidney Disease: Improving Global Outcomes (KDIGO) Acute Kidney Injury Work Group.", title:"KDIGO Clinical Practice Guideline for Acute Kidney Injury", source:"Kidney Int Suppl 2(1):1-138", year:"2012", url:"https://kdigo.org/wp-content/uploads/2016/10/KDIGO-2012-AKI-Guideline-English.pdf"} ]
-    },
-    {
-      id:"severe_hyperkalemia_rrt", num:6, cat:"danger", tag:"重症・乏尿",
+      id:"severe_hyperkalemia_rrt", num:4, cat:"danger", tag:"重症・乏尿",
       title:"乏尿性AKIに合併した高カリウム血症とRRT導入の判断", hint:"68歳男性・重症急性膵炎に伴う乏尿性AKI・尿量低下と徐脈",
       vignette:"68歳男性。重症急性膵炎の診断で入院加療中。第3病日、尿量が過去12時間で100mL程度と著明に減少し、倦怠感とわずかな呼吸苦を訴えている。血圧106/64mmHg、脈拍58/分とやや徐脈。心電図でテント状T波とQRS幅の軽度延長を認める。輸液は前日までにガイドラインに沿った量が投与されている。",
       labs:[ {k:"Cr",v:"4.6",u:"mg/dL",abn:"high"}, {k:"K",v:"7.2",u:"mEq/L",abn:"high"}, {k:"HCO3",v:"14",u:"mEq/L",abn:"low"}, {k:"pH(動脈血ガス)",v:"7.22",u:"",abn:"low"} ],
@@ -633,6 +587,52 @@
       pitfall:"<mark>グルコン酸カルシウムやGI療法だけで「治療した」と安心してしまう</mark>のは危険。これらはいずれもカリウムを体内で移動させるだけの一時的な処置であり、<mark>体外へ排泄する手段(RRTなど)を並行して準備しなければ再上昇する</mark>。またロケルマなどのカリウム吸着薬は効果発現に時間がかかり、添付文書上も緊急の高カリウム血症治療には用いない。",
       pearl:["<mark>高カリウム血症の緊急治療は「心筋保護(カルシウム)」→「細胞内シフト(GI療法、β2刺激薬)」→「体外排泄(RRTなど)」の順に組み立てる</mark>","<mark>RRT導入の適応はAEIOU(重度アシドーシス・電解質異常・中毒・体液過剰・尿毒症症状)</mark>を目安に判断し、いずれかを満たせば緊急導入を検討する。<mark>K7mEq/L以上、または心電図変化を伴い保存的治療に反応しない例は数値やAEIOUの充足数にこだわらず早期に腎臓内科へ相談</mark>してよい","<mark>K値と心電図所見の相関は必ずしも一定でない</mark>ため、K値だけでなく心電図所見を必ず確認する","重症急性膵炎などサードスペース疾患では<mark>輸液量が十分でも乏尿が続く場合、腎性への移行を疑う</mark>","カリウム吸着薬(ロケルマなど)は<mark>急性期を脱した後の再上昇予防に位置づけ、緊急治療の代わりにはならない</mark>"],
       refs:[ {author:"Sterns RH, Grieff M, Bernstein PL.", title:"Treatment of hyperkalemia: something old, something new", source:"Kidney Int 89(3):546-554", year:"2016", url:"https://pubmed.ncbi.nlm.nih.gov/26880451/"}, {author:"Long B, Warix JR, Koyfman A.", title:"Controversies in the Management of Hyperkalemia", source:"J Emerg Med 55(2):192-205", year:"2018", url:"https://doi.org/10.1016/j.jemermed.2018.04.004"}, {author:"LaRue HA, Peksa GD, Shah SC.", title:"A Comparison of Insulin Doses for the Treatment of Hyperkalemia in Patients with Renal Insufficiency", source:"Pharmacotherapy 37(12):1516-1522", year:"2017", url:"https://doi.org/10.1002/phar.2038"}, {author:"Robert T, Vanelle P, Brunet P, et al.", title:"Impact of insulin adsorption in various containers during hyperkalaemia treatment", source:"Clin Kidney J 14(10):2255-2260", year:"2021", url:"https://doi.org/10.1093/ckj/sfab033"}, {author:"Kidney Disease: Improving Global Outcomes (KDIGO) Acute Kidney Injury Work Group.", title:"KDIGO Clinical Practice Guideline for Acute Kidney Injury", source:"Kidney Int Suppl 2(1):1-138", year:"2012", url:"https://kdigo.org/wp-content/uploads/2016/10/KDIGO-2012-AKI-Guideline-English.pdf"} ]
+    },
+    {
+      id:"triple_whammy", num:5, cat:"chronic", tag:"整形外科受診後・倦怠感",
+      title:"3剤併用(トリプルワミー)による薬剤性AKI", hint:"82歳女性・2週間前に鎮痛薬が追加された・倦怠感と食欲低下",
+      vignette:"82歳女性。高血圧に対しカンデサルタン(ARB)とフロセミド20mg/日を内服中。2週間前、変形性膝関節症の痛みに対し整形外科でロキソプロフェン(NSAID)を1日3回内服するよう処方された。ここ数日の倦怠感と食欲低下を主訴に受診した。血圧132/78mmHg、脈拍76/分。水分摂取は普段通りできており、明らかな脱水所見や浮腫は目立たない。",
+      labs:[ {k:"Cr(今回)",v:"2.4",u:"mg/dL",abn:"high"}, {k:"Cr(2週間前)",v:"1.0",u:"mg/dL",abn:"normal"}, {k:"K",v:"5.6",u:"mEq/L",abn:"high"}, {k:"Na",v:"138",u:"mEq/L",abn:"normal"} ],
+      finding:"身体所見:皮膚ツルゴール・粘膜湿潤は保たれ、明らかな脱水所見はない。下腿浮腫なし。",
+      prompts:{
+        severity:{ label:"検査値から、この患者のAKIの重症度と緊急性をどう評価するか", ph:"KDIGO病期、高K血症の心電図評価など…" },
+        pattern:{ label:"内服薬の変化と時系列から、原因としてどの機序を考えるか", ph:"新しく始まった薬ともともと飲んでいた薬の組み合わせなど…" },
+        workup:{ label:"他の原因を除外し、原因薬剤を特定するために何を確認するか", ph:"内服薬歴の詳細な聴取、体液量評価、腎エコーなど…" },
+        action:{ label:"原因薬剤への対応と、今後の再発予防をどう組み立てるか", ph:"どの薬を中止するか、再開の可否、患者教育など…" }
+      },
+      answer:{
+        severity:["<mark>ベースラインCr 1.0mg/dLに対し今回2.4mg/dLで2.4倍に上昇しておりKDIGOステージ2</mark>に該当する。<mark>K 5.6mEq/Lの高カリウム血症も伴い</mark>、心電図でテント状T波などの変化がないか確認する緊急性がある"],
+        pattern:["<mark>NSAIDは腎血流を保つプロスタグランジン産生を阻害して輸入細動脈を収縮させ、ARBは輸出細動脈を拡張させる</mark>。利尿薬による体液量減少が加わると、この3剤が糸球体濾過圧を保つ代償機構を同時に阻害し、<mark>明らかな脱水がなくても血行動態性(腎前性)のAKIを起こしうる</mark>(いわゆる「トリプルワミー」)","<mark>NSAID開始から2週間というタイミング</mark>が薬剤性を強く示唆し、他の新規薬剤や飲水量の変化がないかも確認する"],
+        workup:["<mark>内服薬歴を日付とともに詳細に聴取</mark>し、NSAID(市販薬・湿布も含む)の使用、ARB/利尿薬の用量変更がないかを確認する","体液量評価(起立性低血圧の有無、皮膚所見)を行い、<mark>明らかな脱水所見に乏しいことがトリプルワミーを積極的に疑う根拠</mark>となる","腎エコーで水腎症がないか確認し腎後性を除外する。尿検査で尿細管障害を示す所見(顆粒円柱など)がないかも確認する"],
+        action:["<mark>NSAIDを直ちに中止</mark>する。高カリウム血症を伴う場合は<mark>ARBも一時休薬</mark>し、利尿薬は体液量評価のうえ継続可否を判断する","<mark>K 5.6mEq/Lで心電図変化があれば、グルコン酸カルシウム(カルチコール8.5%)10〜20mLを5〜10分かけて緩徐静注(心筋保護)し、GI療法(50%ブドウ糖液20mLを2〜3回、うち1回にインスリン10単位を混注)で細胞内シフトを図る</mark>。<mark>高齢で腎機能が低下している本例では遅発性低血糖のリスクが高く、インスリン5単位への減量や10%ブドウ糖持続点滴の併用(→症例4で詳述)も選択肢</mark>。心電図変化がなくても頻回のモニタリングを行う","<mark>腎機能・K値の改善を数日で再評価</mark>し、改善すればARB・利尿薬の再開時期を慎重に判断する。今後は変形性膝関節症の鎮痛にNSAID以外の選択肢(アセトアミノフェンなど)を優先し、<mark>NSAIDを新規処方する際は腎機能とARB/利尿薬併用の有無を必ず確認する</mark>体制を作る"]
+      },
+      rx:["NSAID(ロキソプロフェンなど)を中止し、鎮痛にはアセトアミノフェンなど腎への影響が少ない薬剤への変更を検討する","高カリウム血症に心電図変化を伴う場合はグルコン酸カルシウム(カルチコール8.5%)10〜20mLを5〜10分かけて緩徐静注し、GI療法(50%ブドウ糖液20mLを2〜3回、うち1回にレギュラーインスリン10単位を混注)で細胞内シフトを図る。高齢・腎機能低下例では遅発性低血糖に注意し、インスリン5単位への減量やブドウ糖持続点滴の併用を検討する(詳細は症例4を参照)","ARB・利尿薬は腎機能・K値・体液量を見ながら数日以内に再開可否を判断し、自己判断での長期中断は避ける"],
+      pitfall:"<mark>市販の湿布薬や他科で処方されたNSAIDを「飲み薬ではない」として申告し忘れる患者は多く、お薬手帳の内服薬だけを確認して外用薬・市販薬を聞き逃す</mark>のはよくある見落とし。また<mark>腎機能改善後にARB・利尿薬を再開しないまま漫然と休薬を続け、本来の降圧・心不全管理が疎かになる</mark>のも根本原因への対応を誤解した誤り。",
+      pearl:["<mark>利尿薬+ACE阻害薬/ARBの2剤併用にNSAIDを追加すると、2剤併用のみの場合と比べてAKIリスクが約3割(開始1か月以内はさらに)上昇する</mark>とされ、高齢者や新規NSAID開始時は特に注意する","<mark>明らかな脱水がなくても、この3剤の組み合わせだけで血行動態性AKIが起こりうる</mark>ことを知っておく","新規NSAID処方時は<mark>腎機能とARB/ACE阻害薬・利尿薬の併用歴を必ず確認</mark>し、可能なら他の鎮痛薬を優先する","体調不良時にACE阻害薬/ARB・利尿薬・NSAIDsを一時休薬する<mark>「シックデイルール」</mark>の患者教育もあわせて行う"],
+      refs:[ {author:"Lapi F, Azoulay L, Yin H, et al.", title:"Concurrent use of diuretics, angiotensin converting enzyme inhibitors, and angiotensin receptor blockers with non-steroidal anti-inflammatory drugs and risk of acute kidney injury: nested case-control study", source:"BMJ 346:e8525", year:"2013", url:"https://www.bmj.com/content/346/bmj.e8525"}, {title:"Acute Kidney Injury secondary to a combination of renin-angiotensin system inhibitors, diuretics and NSAIDS: \"The Triple Whammy\"", source:"Nefrología", year:"2015", url:"https://www.sciencedirect.com/science/article/pii/S2013251415000139"}, {title:"Avoiding the \"triple whammy\" in primary care: ACE inhibitor/ARB + diuretic + NSAID", source:"Best Practice Advocacy Centre New Zealand (bpacnz)", year:"2018", url:"https://bpac.org.nz/2018/docs/triple-whammy.pdf"} ]
+    },
+    {
+      id:"contrast_aki", num:6, cat:"chronic", tag:"予防可能・造影剤関連",
+      title:"CKD患者への造影CT ― 造影剤腎症の予防策とリスク評価", hint:"70歳女性・糖尿病性腎症でeGFR32・急性虫垂炎疑いで造影CTを検討",
+      vignette:"70歳女性。2型糖尿病に伴う糖尿病性腎症でCKDステージG3b(直近のeGFR 32mL/min/1.73m²、Cr 1.3mg/dL)の診断で腎臓内科に通院中。右下腹部痛で救急外来を受診し、急性虫垂炎が疑われ、外科からヨード造影剤を用いた腹部造影CTが提案された。バイタルサインは安定しており、緊急性の高いショック状態ではない。メトホルミンを内服中。",
+      labs:[ {k:"Cr",v:"1.3",u:"mg/dL",abn:"high"}, {k:"eGFR",v:"32",u:"mL/min/1.73m²",abn:"low"}, {k:"K",v:"4.4",u:"mEq/L",abn:"normal"} ],
+      finding:"身体所見:右下腹部に限局した圧痛と反跳痛を認めるが、バイタルサインは安定。",
+      prompts:{
+        severity:{ label:"この患者の腎機能から、造影剤腎症(CI-AKI)のリスクをどう評価するか", ph:"eGFR・糖尿病などの危険因子、緊急度とのバランスなど…" },
+        pattern:{ label:"造影剤腎症の定義とリスク因子をどう整理するか", ph:"KDIGO定義、糖尿病・脱水・高浸透圧造影剤などの因子…" },
+        workup:{ label:"造影CTを行う前に確認・準備すべきことは何か", ph:"検査前に見直すべき薬剤や代替手段など…" },
+        action:{ label:"造影を実施する場合、予防策と経過観察をどう組み立てるか", ph:"輸液の種類・タイミング、造影後のフォローなど…" }
+      },
+      answer:{
+        severity:["<mark>eGFR 32mL/min/1.73m²(CKD G3b)に加え糖尿病があり、造影剤腎症(CI-AKI)の代表的な危険因子(腎機能低下・糖尿病)を2つ有する</mark>。ただしバイタルサインは安定しており、<mark>虫垂炎の評価という臨床的必要性とCI-AKIリスクを天秤にかけて判断</mark>する状況"],
+        pattern:["<mark>CI-AKIはKDIGO定義上「造影剤投与後48時間以内にCrが0.3mg/dL以上上昇、または7日以内に1.5倍以上上昇、あるいは尿量低下」を満たす場合</mark>と定義される(日本のガイドラインでは造影剤腎症をCr上昇0.5mg/dL以上または25%以上・72時間以内とする定義も併用される)。<mark>危険因子は腎機能低下、糖尿病、脱水、高齢、短期間の反復投与</mark>などが知られている(高浸透圧造影剤は現在の日本ではほぼ使用されておらず歴史的な危険因子)"],
+        workup:["<mark>造影の必要性を外科と再確認し、単純CTや超音波など造影を要さない代替検査で診断がつかないか検討</mark>する(本例は虫垂炎評価で造影が有用な場面だが、代替可能性は都度確認する)","<mark>メトホルミンは腎機能低下例では造影後48時間の休薬と腎機能確認後の再開が現在の基本方針であり、造影前のルーチンでの休薬は近年の運用では必須とされていない</mark>ことを確認する","脱水があれば是正し、他の腎毒性薬剤(NSAIDsなど)が併用されていないか確認する"],
+        action:["<mark>日本のガイドライン2018(日本腎臓学会・日本医学放射線学会・日本循環器学会)は静脈内投与の造影剤についてeGFR<30で予防策の説明・実施を明確に推奨しており、本例(eGFR32)はその基準をわずかに上回るが、糖尿病を合併し危険因子が複数重なるため同様の予防策を検討するのが妥当</mark>である。<mark>虫垂炎の診断が遅れることの不利益も考慮し、時間的余裕があれば生理食塩液を造影開始6時間前から1mL/kg/時で開始し終了後も1mL/kg/時で6〜12時間継続する標準法を、余裕がなければ重曹液を造影開始1時間前から3mL/kg/時、終了後1mL/kg/時で6時間投与する短時間法を用いる</mark>","心不全の合併がある場合は<mark>輸液量を減量する</mark>など個別に調整する","<mark>近年の運用ではメトホルミンを造影前にルーチンで休薬する必要はないとされる。腎機能低下例では造影後48時間休薬し、腎機能を確認してから再開する</mark>","造影後は<mark>数日以内にCrを再検し、CI-AKIの有無を確認</mark>する"]
+      },
+      rx:["時間的余裕があれば生理食塩水を造影開始6時間前から1mL/kg/時で開始し終了後も1mL/kg/時で6〜12時間投与する標準法を、診断を大きく遅らせられない場合は重曹液3mL/kg/時を1時間前から、終了後1mL/kg/時を6時間投与する短時間法を用いる","心不全の合併がある場合は輸液量を減量するなど個別に調整する","メトホルミンは造影前のルーチンでの休薬は不要だが、腎機能低下例では造影後48時間休薬し腎機能を確認してから再開する","低浸透圧・等浸透圧の造影剤を選択し、可能な限り造影剤使用量を必要最小限にとどめる"],
+      pitfall:"<mark>「腎機能が悪いから造影検査は絶対禁忌」と必要な診断的検査を回避し診断が遅れてしまう</mark>のも、逆に<mark>「輸液さえしておけば造影剤腎症は防げる」と油断して造影後のメトホルミン休薬など他の予防策を怠る</mark>のも誤り。臨床的必要性とリスクを天秤にかけたうえで、予防策を組み合わせて実施する。",
+      pearl:["<mark>CI-AKIの主な危険因子は腎機能低下、糖尿病、脱水、高齢</mark>(高浸透圧造影剤は現在の日本ではほぼ使用されておらず歴史的な危険因子)","<mark>予防の第一選択は輸液(生理食塩水)</mark>であり、日本のガイドライン(静脈内投与ではeGFR<30で予防を明確に推奨)では造影前6時間・後6〜12時間の1mL/kg/時投与、時間的余裕がない場合は重曹液の短時間プロトコルが示されている","<mark>メトホルミンは造影前のルーチン休薬は不要で、腎機能低下例では造影後48時間休薬し腎機能確認後に再開する</mark>","診断上真に造影が必要かを都度再検討し、<mark>代替検査(単純CT・超音波)で目的を達成できないか</mark>を考える"],
+      refs:[ {author:"日本腎臓学会・日本医学放射線学会・日本循環器学会.", title:"腎障害患者におけるヨード造影剤使用に関するガイドライン2018", source:"日本腎臓学会誌 61(7):933-1081", year:"2019", url:"https://cdn.jsn.or.jp/data/guideline-201911.pdf"}, {author:"Kidney Disease: Improving Global Outcomes (KDIGO) Acute Kidney Injury Work Group.", title:"KDIGO Clinical Practice Guideline for Acute Kidney Injury", source:"Kidney Int Suppl 2(1):1-138", year:"2012", url:"https://kdigo.org/wp-content/uploads/2016/10/KDIGO-2012-AKI-Guideline-English.pdf"} ]
     }
   ];
 
