@@ -561,7 +561,7 @@
         action:["<mark>NSAIDを直ちに中止</mark>する。高カリウム血症を伴う場合は<mark>ARBも一時休薬</mark>し、利尿薬は体液量評価のうえ継続可否を判断する","<mark>K 5.6mEq/Lで心電図変化があれば、グルコン酸カルシウム(カルチコール8.5%)10〜20mLを5〜10分かけて緩徐静注(心筋保護)し、GI療法(50%ブドウ糖液20mLを2〜3回、うち1回にインスリン10単位を混注)で細胞内シフトを図る</mark>。<mark>高齢で腎機能が低下している本例では遅発性低血糖のリスクが高く、インスリン5単位への減量や10%ブドウ糖持続点滴の併用(→症例2で詳述)も選択肢</mark>。心電図変化がなくても頻回のモニタリングを行う","<mark>腎機能・K値の改善を数日で再評価</mark>し、改善すればARB・利尿薬の再開時期を慎重に判断する。今後は変形性膝関節症の鎮痛にNSAID以外の選択肢(アセトアミノフェンなど)を優先し、<mark>NSAIDを新規処方する際は腎機能とARB/利尿薬併用の有無を必ず確認する</mark>体制を作る"]
       },
       rx:["NSAID(ロキソプロフェンなど)を中止し、鎮痛にはアセトアミノフェンなど腎への影響が少ない薬剤への変更を検討する","高カリウム血症に心電図変化を伴う場合はグルコン酸カルシウム(カルチコール8.5%)10〜20mLを5〜10分かけて緩徐静注し、GI療法(50%ブドウ糖液20mLを2〜3回、うち1回にレギュラーインスリン10単位を混注)で細胞内シフトを図る。高齢・腎機能低下例では遅発性低血糖に注意し、インスリン5単位への減量やブドウ糖持続点滴の併用を検討する(詳細は症例2を参照)","ARB・利尿薬は腎機能・K値・体液量を見ながら数日以内に再開可否を判断し、自己判断での長期中断は避ける"],
-      pitfall:"<mark>市販の湿布薬や他科で処方されたNSAIDを「飲み薬ではない」として申告し忘れる患者は多く、お薬手帳の内服薬だけを確認して外用薬・市販薬を聞き逃す</mark>のはよくある見落とし。また<mark>腎機能改善後にARB・利尿薬を再開しないまま漫然と休薬を続け、本来の降圧・心不全管理が疎かになる</mark>のも根本原因への対応を誤解した誤り。",
+      pitfall:"<mark>他科で処方されたNSAIDや市販の鎮痛薬・湿布薬を申告し忘れる患者は多く、かかりつけの処方やお薬手帳の内服薬だけを確認して他科処方・外用薬・市販薬を聞き逃す</mark>のはよくある見落とし。また<mark>腎機能改善後にARB・利尿薬を再開しないまま漫然と休薬を続け、本来の降圧・心不全管理が疎かになる</mark>のも根本原因への対応を誤解した誤り。",
       pearl:["<mark>利尿薬+ACE阻害薬/ARBの2剤併用にNSAIDを追加すると、2剤併用のみの場合と比べてAKIリスクが約3割(開始1か月以内はさらに)上昇する</mark>とされ、高齢者や新規NSAID開始時は特に注意する","<mark>明らかな脱水がなくても、この3剤の組み合わせだけで血行動態性AKIが起こりうる</mark>ことを知っておく","新規NSAID処方時は<mark>腎機能とARB/ACE阻害薬・利尿薬の併用歴を必ず確認</mark>し、可能なら他の鎮痛薬を優先する","体調不良時にACE阻害薬/ARB・利尿薬・NSAIDsを一時休薬する<mark>「シックデイルール」</mark>の患者教育もあわせて行う"],
       refs:[ {author:"Lapi F, Azoulay L, Yin H, et al.", title:"Concurrent use of diuretics, angiotensin converting enzyme inhibitors, and angiotensin receptor blockers with non-steroidal anti-inflammatory drugs and risk of acute kidney injury: nested case-control study", source:"BMJ 346:e8525", year:"2013", url:"https://www.bmj.com/content/346/bmj.e8525"}, {title:"Acute Kidney Injury secondary to a combination of renin-angiotensin system inhibitors, diuretics and NSAIDS: \"The Triple Whammy\"", source:"Nefrología", year:"2015", url:"https://www.sciencedirect.com/science/article/pii/S2013251415000139"}, {title:"Avoiding the \"triple whammy\" in primary care: ACE inhibitor/ARB + diuretic + NSAID", source:"Best Practice Advocacy Centre New Zealand (bpacnz)", year:"2018", url:"https://bpac.org.nz/2018/docs/triple-whammy.pdf"} ]
     },
@@ -619,7 +619,7 @@
       finding:"身体所見:右下腹部に限局した圧痛と反跳痛を認めるが、バイタルサインは安定。",
       prompts:{
         severity:{ label:"この患者の腎機能から、造影剤腎症(CI-AKI)のリスクをどう評価するか", ph:"eGFR・糖尿病などの危険因子、緊急度とのバランスなど…" },
-        pattern:{ label:"造影剤腎症の定義とリスク因子をどう整理するか", ph:"KDIGO定義、糖尿病・脱水・高浸透圧造影剤などの因子…" },
+        pattern:{ label:"造影剤腎症の定義とリスク因子をどう整理するか", ph:"KDIGO定義、糖尿病・脱水・造影剤の種類や量などの因子…" },
         workup:{ label:"造影CTを行う前に確認・準備すべきことは何か", ph:"検査前に見直すべき薬剤や代替手段など…" },
         action:{ label:"造影を実施する場合、予防策と経過観察をどう組み立てるか", ph:"輸液の種類・タイミング、造影後のフォローなど…" }
       },
@@ -700,7 +700,7 @@
         {t:"④メトホルミンなど腎排泄性薬剤の休薬基準を確認する", d:"メトホルミンは造影検査前に一時中止(緊急検査を除く)し造影後48時間は再開しないなど、添付文書と施設のプロトコルに沿って対応する。"}
       ],
       note:"「脱水がないから大丈夫」「輸液さえしていれば防げる」という単純化はどちらも誤り。複数のリスク要因が重なって初めてAKIが顕在化することが多い。",
-      refs:["Fournier JP, et al.(Triple Whammy)","腎障害患者におけるヨード造影剤使用に関するガイドライン2018"]
+      refs:["Lapi F, et al. BMJ 2013(Triple Whammy)","腎障害患者におけるヨード造影剤使用に関するガイドライン2018"]
     }
   ];
 
